@@ -1,0 +1,47 @@
+id: 6823d216-7e9c-40c9-9b9e-27dff2e5dd8b
+name: "Conversational AI Advanced processing service"
+tagline: "Collection of modules to help with validation, identification and authentication processes in Conversational AI applications."
+authors: 
+  - name: "Jan Görgen"
+    github_alias: "Jan Görgen"
+  - name: "Timm Walz"
+    github_alias: "nonstoptimm"
+  - name: "Ali Bina"
+    github_alias: "iAli61"
+
+business_problem: Conversational AI today is built on top of many connected technologies from several providers. This makes access validation, identification and authentication more difficult. This accelerator will simplify that workflow, adding security and speeding time to authentication.
+business_value: "The main field of use are intelligent applications with text-and speech input, such as chat bots or voice bots. 
+  \n- Provide a modular and extendable pre/post processing service
+  \n- Provide a better experience of the app with more flexible user input options
+  \n- Enable extended, context-based understanding of user input
+  \n- Take a channel-based approach where appropriate
+  \n- Process/UX Flow Best Practices for common scenarios
+  \n- Create a consistent experience
+  \n- Reduce errors"
+accelerator_description: This solution accelerator is designed for use with intelligent applications with text and speech input, such as chat bots or voice bots.  It consists of a series of APIs the simplify common validation, identification and authentication tasks when implementing conversational AI solutions.
+modeling_approach_and_training: "There are 3 layers,
+   \n- API Layer - Contains function-specific Logic (e.g. Business rules like IBAN structure) and the html request and response handling when using an http-triggered function.
+   \n- Module Layer - Contains re-usable Processing Logic (e.g. Spelling Resolver). A module can be based on Python classes or functions.
+   \n- Import Layer - Stores data assets required for the processing (e.g. spelling dictionaries, spelling rules, address table). These can also be split by languages, if support for multiple languages is required."
+value: Among the key activities in conversational AI interactions are validation, identification and authentication of the user.  By creating an accelerator, we not only drive speed in delivery, but we also ensure consistent processing approach to these important activities. 
+data: Textual data.
+architecture:
+  "- Azure Functions
+  \n- Azure KeyVault
+  \n- Azure Language Understanding Service (LUIS)
+  \n- Azure Table Storage 
+  \n- Python"
+images:
+  screenshot_filename: "conversational-ai-advanced-processing.png"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/cai-advanced-processing-service'
+  arm_template: ''
+industries: 
+  - Retail
+  - Financial Services & Insurance
+  - Media
+  - Healthcare
+tags: 
+  - NLP
+assetType: "Accelerator"

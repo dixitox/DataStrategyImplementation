@@ -1,0 +1,43 @@
+id: 13598990-9f18-44e0-8b68-cbfbe74e2533
+name: "Speech to Text Transcription and Classification"
+tagline: "Classify audio transcription into actionable meaning."
+authors: 
+  - name: "Nejhdeh Ghevondian"
+    github_alias: ""
+  - name: "Kyoichi Iwasaki"
+    github_alias: "kyoro1"
+  - name: "Zachary Hou"
+    github_alias: "Zachary-Syd"
+  - name: "Aditya Swaminathan"
+    github_alias: ""
+business_problem: "Solves business use-cases including
+  \n- General audio message classification within a noisy environment
+  \n- Monitoring communications for safety and regulatory purposes
+  \n- Complex audio message and communication classification scenarios"
+
+business_value: Automatically monitoring radio communications for safety and compliance purpose allows to intervene and improve adherence to protocol thereby improving safety outcomes.
+accelerator_description: Speech-to-text transcription and classification solution accelerator is an end-to-end speech transcription and message classification solution for any type of business problem requiring an advanced method for classifying audio messages into actionable meaning.
+modeling_approach_and_training: "The proposed end-to-end solution workstreams flow consists of three main processes: audio signal processing, speech-to-text transcription/boosting and advanced NLP sequential modelling with communication conformance ML classification. Additionally, Azure ML Services and Pipelines are used to orchestrate these key processes."
+value: This accelerator provides end-to-end solution for speech transcription, domain specific entity extraction and message classification, as well as signal processing for denoising.
+data: This accelerator provides some sample data in the use case of positive communication compliance monitoring in mining including audio files, ground truth transcription and class labels, as well as the domain specific ontology files. The users can refer to the format of the sample data and prepare their own ontology and data in their specific use case. 
+architecture: Azure Machine Learning
+images:
+  thumbnail_filename: "speech-to-text.png"
+  screenshot_filename: "speech-to-text.png"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/dstoolkit-speech-to-text-nlp-mining-accelerator'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Automotives
+  - Energy
+  - Financial Services & Insurance
+  - Media
+  - Sustainability
+  - Healthcare
+tags: 
+  - NLP
+assetType: "Accelerator"

@@ -1,0 +1,10 @@
+name: Actions Policy
+description: This policy controls the usage of Github Actions within the organization
+
+resource: organization
+configuration:
+  actions:
+    enabled: true
+    allowFromGitHub: true
+    allowAllVerified: true
+    allowGitHubHostedRunners: false

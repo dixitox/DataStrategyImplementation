@@ -1,0 +1,31 @@
+id: ca2f153f-41b9-4ebf-b272-c3a9dcd99a59
+name: "Retail Analytics"
+tagline: "Customer segmentation, churn and lifetime value prediction."
+authors: 
+  - name: "Muhammad Sibtain Hamyun"
+    github_alias: "sibtain-h"
+business_problem: To increase sales, companies need to identify both high value customers and customers who are likely to churn, in order to target these customers with marketing intervention that could influence behaviour, and thereby either increase spend in high value customers or decrease the likelyhood of customers churning.
+business_value: 
+  "\n- Indentify high value customers.
+  \n- Indentify customers who are likely to churn.
+  \n- Understand what the uplift in sales could be when customer value is increased or when churn is decreased."
+accelerator_description: Retail analytics uses recency, fequency and value metrics to segment customers and help determine which customers are more likely to be higher value customers (Customer Lifetime Value) and which customers are likely to churn. This can help marketing teams target sets of customers with specific messaging to prevent churn and increase customer value.
+modeling_approach_and_training: "Series of Notebooks that explain and provide examples for
+ \n- Customer Segementation
+ \n- Customer Lifetime Value prediction
+ \n- Churn prediction
+ \n- Predicting Sales
+ \n- Designing A/B testing experiments"
+value: Easy to follow, recommended practices represented in Notebooks with sample data.
+data: Tabluar data. Sample opensource datasets are incuded in the repository.
+architecture: Azure Machine Learning
+images:
+  screenshot_filename: "retail-analytics.png"
+links:
+  source_code: 'https://github.com/microsoft/dstoolkit-retail-analytics'
+industries: 
+  - Retail
+  - Financial Services & Insurance
+tags: 
+  - Segmentation
+assetType: "Accelerator"

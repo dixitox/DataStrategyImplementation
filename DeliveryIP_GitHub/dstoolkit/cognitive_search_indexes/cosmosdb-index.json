@@ -1,0 +1,564 @@
+{
+    "name": "cosmosdb-index",
+    "fields": [
+      {
+        "name": "businessProblem",
+        "type": "Edm.String",
+        "searchable": true,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "businessValue",
+        "type": "Edm.String",
+        "searchable": true,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "description",
+        "type": "Edm.String",
+        "searchable": true,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "modelingApproachAndTraining",
+        "type": "Edm.String",
+        "searchable": true,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "data",
+        "type": "Edm.String",
+        "searchable": true,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "architecture",
+        "type": "Edm.String",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "screenshot",
+        "type": "Edm.ComplexType",
+        "fields": [
+          {
+            "name": "path",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "altText",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          }
+        ]
+      },
+      {
+        "name": "sourceCode",
+        "type": "Edm.String",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "demoUrl",
+        "type": "Edm.String",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "armTemplate",
+        "type": "Edm.String",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "requireHosting",
+        "type": "Edm.Boolean",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "acrRepositoryName",
+        "type": "Edm.String",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "comments",
+        "type": "Edm.String",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "stargazers",
+        "type": "Edm.Int64",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "subscribers",
+        "type": "Edm.Int64",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "forks",
+        "type": "Edm.Int64",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "id",
+        "type": "Edm.String",
+        "searchable": false,
+        "filterable": true,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": true
+      },
+      {
+        "name": "partitionKey",
+        "type": "Edm.String",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "name",
+        "type": "Edm.String",
+        "searchable": true,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": true,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "tagline",
+        "type": "Edm.String",
+        "searchable": true,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "industries",
+        "type": "Collection(Edm.String)",
+        "searchable": true,
+        "filterable": true,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": true,
+        "key": false
+      },
+      {
+        "name": "tags",
+        "type": "Collection(Edm.String)",
+        "searchable": true,
+        "filterable": true,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": true,
+        "key": false
+      },
+      {
+        "name": "authors",
+        "type": "Collection(Edm.ComplexType)",
+        "fields": [
+          {
+            "name": "name",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "email",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "githubAlias",
+            "type": "Edm.String",
+            "searchable": true,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "githubAvatar",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "twitter",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "linkedin",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          }
+        ]
+      },
+      {
+        "name": "order",
+        "type": "Edm.Int32",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": true,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "importV1",
+        "type": "Edm.Boolean",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "lastPush",
+        "type": "Edm.DateTimeOffset",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": true,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "bookmarked",
+        "type": "Edm.Int64",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": true,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "reviewed",
+        "type": "Edm.Int64",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": true,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "createdBy",
+        "type": "Edm.ComplexType",
+        "fields": [
+          {
+            "name": "on",
+            "type": "Edm.DateTimeOffset",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": true,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "displayName",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "objectId",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "mail",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          }
+        ]
+      },
+      {
+        "name": "releasedBy",
+        "type": "Edm.ComplexType",
+        "fields": [
+          {
+            "name": "on",
+            "type": "Edm.DateTimeOffset",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": true,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "displayName",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "objectId",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "mail",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          }
+        ]
+      },
+      {
+        "name": "lastChangedBy",
+        "type": "Edm.ComplexType",
+        "fields": [
+          {
+            "name": "on",
+            "type": "Edm.DateTimeOffset",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": true,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "displayName",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "objectId",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "mail",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          }
+        ]
+      },
+      {
+        "name": "assetType",
+        "type": "Collection(Edm.String)",
+        "searchable": false,
+        "filterable": true,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": true,
+        "key": false
+      },
+      {
+        "name": "enabled",
+        "type": "Edm.Boolean",
+        "searchable": false,
+        "filterable": true,
+        "retrievable": true,
+        "sortable": false,
+        "facetable": false,
+        "key": false
+      },
+      {
+        "name": "usedBy",
+        "type": "Collection(Edm.ComplexType)",
+        "fields": [
+          {
+            "name": "displayName",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "objectId",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          },
+          {
+            "name": "mail",
+            "type": "Edm.String",
+            "searchable": false,
+            "filterable": false,
+            "retrievable": true,
+            "sortable": false,
+            "facetable": false,
+            "key": false
+          }
+        ]
+      },
+      {
+        "name": "usedByCount",
+        "type": "Edm.Int64",
+        "searchable": false,
+        "filterable": false,
+        "retrievable": true,
+        "sortable": true,
+        "facetable": false,
+        "key": false
+      }
+    ],
+    "similarity": {
+      "@odata.type": "#Microsoft.Azure.Search.BM25Similarity"
+    }
+  }

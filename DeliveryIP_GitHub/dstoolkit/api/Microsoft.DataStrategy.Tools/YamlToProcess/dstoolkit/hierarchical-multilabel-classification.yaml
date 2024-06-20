@@ -1,0 +1,34 @@
+id: 91b5840c-e207-4624-bee3-d0c5513a278a
+name: "Hierarchical multi-label classification"
+tagline: "Root Cause Analysis for multi-class, multi-label scenarios."
+authors: 
+  - name: "Senani Nori"
+    github_alias: "Senani-Nori"
+  - name: "Tarun Dugar"
+    github_alias: ""
+business_problem: Create a hierarchical multi-label classifier, which explores all the “approaches” possible in hierarchical multi-label classification and recommends the best method.
+business_value: Supports variety of use-cases in which classes are hierarchically structured and objects can be assigned to multiple paths of the class hierarchy at the same time, ex. text classification & image annotation.
+accelerator_description: The labeling and layering in a hierarchical, multi-label classification (HMLC) model can be quite complex and take a significant amount of time, especially in discovering the best approach. This accelerator gives the best approach with all the models wrapped in a single model-like wrapper.
+modeling_approach_and_training: "There are broadly three approaches to solving a multi-label classification: power-set labels, independent models and chained models. This accelerator explores all these approaches with different algorithms or model classes passed on by the users and returns a composite model-like artefact, which wraps the best approach and constituent models with the familiar Sklearn-like methods."
+value: This accelerator cuts short the time required to discover the best approach in HMLC while being comprehensive search. Since it uses a very familiar interface, the learning curve is very short, while being very flexible in terms of usage.
+data: "Labelled data in the form of Pandas dataframes containing input columns and label columns. Types of data that can be processed - 
+ \n- Text
+ \n- Numerical data (say, financial variance analysis)
+ \n- Image data after pre-processing"
+architecture:
+  "- Azure Machine Learning
+  \n- Python"
+images:
+  screenshot_filename: "hierarchical-multi-label-classification.png"
+links:
+  demo: 
+  source_code: 'https://github.com/microsoft/dstoolkit-hierarchical-multilabel-classification'
+  arm_template: 
+industries: 
+  - Manufacturing
+  - Energy
+  - Financial Services & Insurance
+  - Healthcare
+tags: 
+  - Classification
+assetType: "Accelerator"

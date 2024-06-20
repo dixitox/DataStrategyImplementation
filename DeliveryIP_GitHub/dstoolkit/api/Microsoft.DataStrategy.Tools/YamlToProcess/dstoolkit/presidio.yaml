@@ -1,0 +1,62 @@
+id: c11fdf0c-229a-4360-a71e-88d65d4950c7
+name: "Microsoft Presidio"
+tagline: "Context aware, pluggable and customizable data protection and de-identification SDK for text and images."
+authors: 
+  - name: "Nava Vaisman Levy"
+    github_alias: "navalev"
+  - name: "Sharon Hart"
+    github_alias: "SharonHart"
+  - name: "Omri Mendels"
+    github_alias: "omri374"
+  - name: "Coby Peled"
+    github_alias: "cobypeled"
+  - name: "Avishay Balter"
+    github_alias: "balteravishay"
+  - name: "Nile Wilson"
+    github_alias: "niwilso"
+  - name: "Malvina Matlis"
+    github_alias: "melmatlis"
+  - name: "Trang Nguyen"
+    github_alias: "tranguyen221"
+  - name: "Shiran Rubin"
+    github_alias: "shiranr"
+
+business_problem: "Presidio allows organization to build de-identification pipelines which facilitate access to sensitive data; scanning of software systems and databases for personal information; semi-automated data redaction."
+business_value: "Enable risk redaction in data handling by de-identifying data; De-identify data on prem and on cloud to unblock integrations and migrations; De-identify data at move or at rest."
+accelerator_description: ""
+modeling_approach_and_training: "A toolbox for customizable de-identification pipelines, comprised of:
+\n- Pesidio Analyzer: Identify PII/PHI in text, images, semi-structured data.
+\n- Presidio Anonymizer: Transform identified PII/PHI into non-sensitive data, using redaction, masking, encryption and more.
+\n- Presidio Image Redactor: Identify and redact PII/PHI in images using OCR.
+\n- Deployment and operationalization samples on multiple Azure platforms (Azure Data Factory, Azure App service, Azure Databricks, Azure Kubernetes Service and more) 
+\n- Presidio research: Tools for creating and evaluating PII detection mechanisms and for creating synthetic PII data."
+data: Any dataset containing PII/PHI
+
+architecture: "- Python
+ \n- Azure Data Factory
+ \n- Databricks / Synapse
+ \n- Azure Kubernetes Service
+ \n- Azure App Services
+ \n- On-premises/multiple clouds deployment
+ \n- Jupyter notebooks"
+
+images:
+  screenshot_filename: "presidio.gif"
+
+links:
+  demo: "https://aka.ms/presidio-demo"
+  docs: "https://microsoft.github.io/presidio"
+  source_code: 'https://github.com/microsoft/presidio'
+
+industries: 
+  - Financial Services & Insurance
+  - Healthcare and Life Sciences
+  - Retail
+  - Public Sector and Government
+  - Travel
+tags: 
+  - Anonymization
+  - Data Masking
+  - Redaction
+  - Data Loss Prevention
+assetType: "Accelerator"

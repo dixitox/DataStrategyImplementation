@@ -1,0 +1,26 @@
+id: cd9150dd-e8bf-402f-9bb7-08cfbfde225b
+name: "Energy Profiling & Prediction"
+tagline: "Review and predict energy consumption for manufacturing machines."
+authors:
+  - name: "Florian Pydde"
+    github_alias: "FlorianPydde"
+business_problem: Manufacturing plants have huge eletricity demands for which prices are negotiated in advance with electricity providers. Understanding the eletricity profiles of machines based on a set of factors, like speed, heating, etc, is the first step in optimizting plant operations. 
+business_value: 
+  "- Cost reduction
+  \n- Improved energy governance and control"
+accelerator_description: The live demo shows how to organise machinery data, what kind of dashboard stakeholders are interested to use, and how to predict energy consumption from machines."
+modeling_approach_and_training: A simple trained linear regression model is added to the repository.
+data: Tabular data showing common machine controls like velocity, rotational speed, etc. The dataset is a dummy dataset based on past engagements. 
+architecture:
+  "- Azure App Services
+  \n- Streamlit"
+images:
+  screenshot_filename: "manufacturing_energy_optimization.png"
+links:
+  demo: "https://demos.ds-toolkit.com/manufacturing/"
+  source_code: 'https://github.com/microsoft/dstoolkit-ai-ux/tree/main/visualizations/manufacturing_analytics'
+industries: 
+  - Manufacturing
+tags: 
+  - Regression
+assetType: "Demo"

@@ -1,0 +1,54 @@
+id: 3c906562-870c-4c95-830a-497604c6f06a
+name: "Conversational AI Test and Training Tool"
+tagline: "Simplify common validation, identification and authentication tasks when implementing conversational AI solutions.  Kick start the testing and training functions of conversational AI projects."
+authors: 
+  - name: "Jan Görgen"
+    github_alias: "Jan Görgen"
+  - name: "Timm Walz"
+    github_alias: "nonstoptimm"
+  - name: "Ali Bina"
+    github_alias: "iAli61"
+  - name: "Ihab Damen"
+    github_alias: "ihabdamen"
+  - name: "João Quitério"
+    github_alias: "joaollq"
+business_problem: Testing and training are among the key activities in conversational AI projects; they are critical to improving the solutions and scaling them to production. By creating an accelerator, we want to speed up delivery, while also ensuring that testing and training tools are introduced in early phases of the projects and re-development of similar functionality across multiple projects is reduced. 
+business_value: "
+ \n- Consistent testing and training approach 
+ \n- Consistent deployment approach 
+ \n- Improved speed to production deployment 
+ \n- Improved speed to value 
+ \n- Reduce redundancy and drive cost savings "
+accelerator_description: "The Conversational AI Test and Train tool is a Web-based tool to enable Business Users and Data Scientists to easily perform test and training activities around cognitive services incl. cross-services end-2-end batch testing with the related “Conversational AI Advanced Pre-processing Service” a post-processing service. The tool comprises of a multi-language ready WebApp prepared to also support different access-levels. Further the backend functionality is provided via Function Apps which deliver different capabilities.​​​​The intention of the tool is to kick-start Conversational AI projects testing and training activities. Depending on the project the end-2-end testing capabilities can be extended by the project team to support more features of the “Conversational AI Advanced Pre-processing Service” as well as other Cognitive Services such as the Language Service. The services in the accelerator include:
+ \n- QnA Maker, batch testing of QnA knowledge bases.
+ \n- QnA Maker, deployment of QnA Maker Knowledge Bases to a production environment incl. testing
+ \n- Speech Service, batch testing of baseline and custom speech models.
+ \n- Speech Service, end-2-end batch testing of speech models in combination with license plate recognition post processing (see project Conversational AI Advanced Processing Service)
+ \n- Speech Service, batch text-to-speech audio content creation."
+modeling_approach_and_training: |
+  
+value: Accelerate time to value for Conversational AI solutions with this accelerator.
+data: Textual data
+architecture:
+  "- Azure Key Vault
+  \n- QnA Maker
+  \n- Azure Speech Service
+  \n- Storage Account
+  \n- Application Insights
+  \n- Audio Generation Function Application
+  \n- Speech Batchtesting Function Application
+  \n- App Service Plan"
+images:
+  screenshot_filename: "conversational-ai-test-training-tool.jpg"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/cai-test-training-tool'
+  arm_template: ''
+industries: 
+  - Retail
+  - Financial Services & Insurance
+  - Media
+  - Healthcare
+tags: 
+  - NLP
+assetType: "Accelerator"

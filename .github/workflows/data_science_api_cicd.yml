@@ -1,0 +1,200 @@
+# This is a basic workflow to help you get started with Actions
+
+name: dstoolkit-api-cicd
+
+# Controls when the workflow will run
+on:
+  # Allows you to run this workflow from another workflow
+  workflow_call:
+    secrets:
+      TENANT_ID:
+        required: true
+      SUBSCRIPTION_ID:
+        required: true
+      SERVICE_PRINCIPAL_CLIENT_ID:
+        required: true
+    inputs:
+      environment:
+        required: true
+        type: string
+      envFolderPath:
+        required: true
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  data-science-api-cicd:
+
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    environment:
+      name: ${{ inputs.environment }}
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Log into Azure
+      - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
+          enable-AzPSSession: true
+
+      - name: Get Main Variables
+        run: |
+          $json_data = Get-Content "./DeliveryIP_GitHub/variables/data_science_toolkit/data_science_toolkit_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          foreach ( $item in $json_data.GetEnumerator() )
+          {
+            if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
+              $value = $($item.Value) | ConvertTo-Json -Compress
+              "$($item.Name)=$value" >> $env:GITHUB_ENV
+            } else {
+              "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
+            }
+          }
+        shell: pwsh
+        
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '3.1.x'
+
+      - name: Build Soultion
+        working-directory:  ${{ github.workspace }}/DeliveryIP_GitHub/dstoolkit/api
+        run: |
+          dotnet build --configuration Release
+
+      - name: Publish API
+        working-directory:  ${{ github.workspace }}/DeliveryIP_GitHub/dstoolkit/api
+        run: |
+          dotnet publish Microsoft.DataStrategy.Api/Microsoft.DataStrategy.Api.csproj --configuration Release --output ./publish/api/
+
+      - name: Publish Functions
+        working-directory:  ${{ github.workspace }}/DeliveryIP_GitHub/dstoolkit/api
+        run: |
+          dotnet publish Microsoft.DataStrategy.Functions/Microsoft.DataStrategy.Functions.csproj --configuration Release --output ./publish/function/
+
+      - name: Azure WebApp
+        uses: Azure/webapps-deploy@v2
+        with:
+          # Name of the Azure Web App
+          app-name: ${{ env.webAppName }}
+          # Applies to Web App only: Path to package or folder. *.zip, *.war, *.jar or a folder to deploy
+          package: ${{ github.workspace }}/DeliveryIP_GitHub/dstoolkit/api/publish/api
+
+      - name: Azure Functions Action
+        uses: Azure/functions-action@v1
+        with:
+          # Name of the Azure Function App
+          app-name: ${{ env.functionAppName }}
+          # Path to package or folder. *.zip or a folder to deploy
+          package: ${{ github.workspace }}/DeliveryIP_GitHub/dstoolkit/api/publish/function
+
+      - name: Set API App Settings
+        uses: azure/powershell@v1
+        with:
+          inlineScript: |
+            $settings = @(
+              @{
+                name = "CommunicationServiceConfiguration__PlatformContactRecipients"
+                value = "${{ env.PlatformContactRecipients }}"
+                slotSetting = $false
+              },
+              @{
+                name = "AzureAd__TenantId"
+                value = "${{ env.DataScienceAppTenantId }}"
+                slotSetting = $false
+              },
+              @{
+                name = "AzureAd__ClientId"
+                value = "${{ env.DataScienceAppClientId }}"
+                slotSetting = $false
+              },
+              @{
+                name = "AzureAd__Scopes__0"
+                value = "api://${{ env.DataScienceAppClientId }}/api.access"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__Organization"
+                value = "${{ env.GitHubConfiguration__Organization }}"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__InstallationId"
+                value = "${{ env.GitHubConfiguration__InstallationId }}"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__AppId"
+                value = "${{ env.GitHubConfiguration__AppId }}"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__TokenExpiration"
+                value = "${{ env.GitHubConfiguration__TokenExpiration }}"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__UsePAT"
+                value = "${{ env.GitHubConfiguration__UsePAT }}".ToLower()
+                slotSetting = $false
+              }
+            );
+
+            $settings | ConvertTo-Json -depth 100 | Out-File "./api-app-settings.json";
+            az webapp config appsettings set -g ${{ env.DataScienceToolkitRgName }} -n ${{ env.webAppName }} --settings @api-app-settings.json
+          azPSVersion: "9.5.0"
+
+      - name: Create Function App Settings
+        uses: azure/powershell@v1
+        with:
+          inlineScript: |
+            $settings = @(
+              @{
+                name = "GitHubConfiguration__Organization"
+                value = "${{ env.GitHubConfiguration__Organization }}"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__InstallationId"
+                value = "${{ env.GitHubConfiguration__InstallationId }}"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__AppId"
+                value = "${{ env.GitHubConfiguration__AppId }}"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__TokenExpiration"
+                value = "${{ env.GitHubConfiguration__TokenExpiration }}"
+                slotSetting = $false
+              },
+              @{
+                name = "GitHubConfiguration__UsePAT"
+                value = "${{ env.GitHubConfiguration__UsePAT }}"
+                slotSetting = $false
+              },
+              @{
+                name = "AssetsStatisticsQueuerTriggerTime"
+                value = "${{ env.statistics_function_cron }}"
+                slotSetting = $false
+              },
+              @{
+                name = "AssetsEnrichmentQueuerTriggerTime"
+                value = "${{ env.enrichment_function_cron }}"
+                slotSetting = $false
+              }
+            );
+
+            $settings | ConvertTo-Json -depth 100 | Out-File "./function-app-settings.json";
+            az functionapp config appsettings set -g ${{ env.DataScienceToolkitRgName }} -n ${{ env.functionAppName }} --settings @function-app-settings.json
+          azPSVersion: "9.5.0"

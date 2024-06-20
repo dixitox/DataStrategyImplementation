@@ -1,0 +1,180 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
+    <PackageReference Include="YamlDotNet.NetCore" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Microsoft.DataStrategy.Core\Microsoft.DataStrategy.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="YamlToProcess\acts\vat-taxanomaly.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\anomaly-detection.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\azure-data-labs.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\azure-object-detection-accelerator.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\consumer analytics.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\conversational-ai-advanced-processing-service.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\conversational-ai-test-training-tool.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\forecasting.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\fuzzy-matching.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\glue-cognitive-services-accelerator.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\hierarchical-multilabel-classification.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\knowledge-graph-powered-search.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\knowledge-mining-accelerator.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\large-scale-route-optimization.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\manufacturing-energy-optimization.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\ml-ops-aml.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\mlops-databricks.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\power-virtual-agent-audio-codes.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\presidio.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\retail-analytics.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\anomaly-detection.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\azure-data-labs.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\azure-object-detection-accelerator.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\consumer_analytics.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\conversational-ai-advanced-processing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\conversational-ai-test-training-tool.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\fuzzy-matching.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\glue.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\hierarchical-multi-label-classification.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\kg_search.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\knowledge-mining.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\large-scale-route-optimization.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\manufacturing_energy_optimization.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\ML-Ops-for-Databricks.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\ML-Ops.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\power-virtual-agent-audio-codes.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\presidio.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\retail-analytics.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\speech-to-text.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\timeseries-forecasting.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\verseagility.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\vitastic.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\screenshots\vitastic2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\speech-to-text-transcription-classification.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\verseagility.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="YamlToProcess\dstoolkit\vitastic.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="YamlToProcess\acts\screenshots\" />
+  </ItemGroup>
+
+</Project>

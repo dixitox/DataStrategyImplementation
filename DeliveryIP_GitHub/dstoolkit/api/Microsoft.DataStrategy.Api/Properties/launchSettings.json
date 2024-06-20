@@ -1,0 +1,32 @@
+{
+  "profiles": {
+    "Microsoft.DataStrategy.Api": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "local"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:7078;http://localhost:5078"
+    },
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "localacts"
+      },
+      "nativeDebugging": true
+    }
+  },
+  "$schema": "https://json.schemastore.org/launchsettings.json",
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:17930",
+      "sslPort": 44325
+    }
+  }
+}

@@ -1,0 +1,38 @@
+id: 2d168d2e-4a3f-4380-b236-03266e39aede
+name: "Power Virtual Agents Audio Codes"
+tagline: "Contact center voice assistants and line of business system integration."
+authors: 
+  - name: "Russ Williams"
+    github_alias: "managedcoder"
+  - name: "Bradley Lawrence"
+    github_alias: "bradrlaw"
+business_problem: The goal of a modern contact center solution is to provide a customer experience that rivals that of an experienced human agent and do that at scale and at a fraction of the cost of a traditional contact center. Achieving that goal requires a solution that can transform conversation into a coordinated business process that weaves together a core set of solution elements to respond effectively. This solution accelerator provides the building blocks and blueprint for how to use Power Virtual Agent and AudioCodes VoiceAI Connect Cloud Edition to build a modern contact center assistant. A modern contact center solution involves the effective integration of the key systems and services shown below leveraging, conversational AI and telephony. In this accelerator, the conversational AI discipline is provided by Microsoft's Power Virtual Agent (PVA) and telephony is provided by AudioCodes VoiceAI Connect Cloud (VAIC-C).
+business_value: Provide cost savings and faster time to market for contact center solutions with this accelerator.
+accelerator_description: "The PVA AudioCodes accelerator supports the following components
+ \n- Contact Center Assistant,
+ \n- Experiences,
+ \n- Customer Services, and
+ \n- Line of Business Integration."
+modeling_approach_and_training: "Verseagility is a modular toolkit that can be extended by further use-cases as needed. Following use-cases are already implemented and ready to be used: Binary, multi-class & multi-label classification. Named entity recognition. Question answering. Opinion mining."
+value: Demonstrate and Implement the basics for a contact center solution in a short time, using the step-by-step guidance and reusable starting point contained in this accelerator.
+data: Audio data. Audio samples are provided in the repository in the folder AudioLogos
+architecture:
+ "- Power Virtual Agents
+ \n- Power Automate
+ \n- Azure Functions
+ \n- Blob Storage
+ \n- AudioCodes Voice AI Connect Cloud"
+images:
+  screenshot_filename: "power-virtual-agent-audio-codes.png"
+links:
+  demo: "https://youtu.be/BbSai6W-RDM"
+  source_code: 'https://github.com/microsoft/dstoolkit-pva-audiocodes-cc'
+  arm_template: ''
+industries: 
+  - Retail
+  - Financial Services & Insurance
+  - Media
+  - Healthcare
+tags: 
+  - Conversational AI
+assetType: "Accelerator"

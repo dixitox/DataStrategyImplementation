@@ -1,0 +1,30 @@
+id: e98ab392-b244-4e50-a81f-a9d54c6a135b
+name: "Large Scale Route Optimization"
+tagline: "Large scale route optimization for problems that cannot be solved in a reasonable time."
+authors: 
+  - name: "Andy He"
+    github_alias: "andyhemsft"
+  - name: "Jin Yu"
+    github_alias: "yuj18"
+business_problem: Creating an optimization engine that can automatically suggest the best route for product delivery. 
+business_value: Increased delivery pace and cost decrease
+accelerator_description: This accelerator provides the code template to solve large-scale route optimization problems.
+modeling_approach_and_training: "Route optimization is modelled as a constraint programming problem, that can take on arbitrary real-world constraints. A parallelization framework is implemented for finding feasible solutions of large-scale optimization problems."
+value: This accelerator provides you a framework to solve large-scale real-world route optimization problems.
+data: This accelerator accepts data in a structured format, e.g., in CSV format. The data is expected to provide the information that can be used to formulate the route optimization problem. It also accepts a few user defined parameters, e.g., maximum number of stops per vehicle, for simulation purposes.
+architecture: Azure Machine Learning
+images:
+  screenshot_filename: "large-scale-route-optimization.png"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/dstoolkit-route-optimization'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Energy
+  - Sustainability
+tags: 
+  - Optimization
+assetType: "Accelerator"

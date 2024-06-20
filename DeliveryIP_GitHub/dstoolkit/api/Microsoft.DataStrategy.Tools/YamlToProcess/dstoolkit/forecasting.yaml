@@ -1,0 +1,64 @@
+id: bd53f8ba-0ff5-4a00-ab42-686ea5c67724
+name: "Forecasting 2.0"
+tagline: "Forecast multiple time series by building models based of time-series profiling."
+authors: 
+  - name: "Marina Bellani"
+    github_alias: "mmbellani"
+  - name: "Akshay Naik"
+    github_alias: "akshay9"
+  - name: "Fabian Rügamer"
+    github_alias: "F4314N"
+  - name: "Kalyan Chakravadhanula"
+    github_alias: "clkalyan"
+  - name: "Kyoichi Iwasaki"
+    github_alias: "kyoro1"
+  - name: "Florian Pydde"
+    github_alias: "FlorianPydde"
+business_problem: "Data preparation and model selection when trying to forecast several time series that show different behaviour, i.e. seasonality vs intermittence. Business cases: electricity demand forecast of several meters; eletricity production forecast of several plants; SKU demand in retail."
+business_value: "The forecasting accelerator helps to reduce the time taken for data preparation and model selection and to increase forecast accuracy"
+accelerator_description: "This accelerator provides code and guidance to produce time series forecasting and time series profiling. 
+This accelerator helps data scientists who want to forecast multiple time series by building models based on the time series profile (i.e. seasonal vs intermittent). Included in this accelerator are:
+\n 1. Guidelines in the form of notebooks that can help with all the necessary steps to perform high quality data preparation, which is crucial in forecasting.
+\n 2. A library of functions that help with:
+  \n- Sliding plots to visualize time series
+  \n- Holidays by country or other regressors such as months, weekdays and interaction terms
+  \n- Creating normal temperature future scenarios to generate forecasts years-ahead
+  \n- Filling missing data using similar days or similar weeks values
+  \n- Compute errors like mean absolute error and mean absolute percentage error (also in case of divede by zero)
+  \n- Wrap up results in Excel or csv files
+\n 3. Help to undestand the complexity to forecast a time series by profiling the time series.
+\n 4. Backtesting with multiple models, and choosing the best model in terms of mean absolute error
+\n 5. Optimizing models to better fit the training dataset and forecast the target variable: from energy consumption to spare parts demand. Profiling time series helps in defining the best fitting model in terms of choice of regressors (calendar variables or temperatures), forecasting algorithm (ARIMA vs Exponential smoothing) and train set (one year or just few days of data)"
+modeling_approach_and_training: "A Series of notebooks that walk through the essential steps to generate a good forecast:
+\n- Exploration
+\n- Preparation
+\n- Profiling
+\n- Clustering and 
+\n- Prediction scoring"
+data: Energy Demand data is used to illustrate how to use the accelerator
+
+architecture: "- Azure Machine Learning
+ \n- Jupyter Notebooks
+ \n- Power BI (Energy Demand Dashboard)
+ \n- Python"
+
+images:
+  screenshot_filename: "timeseries-forecasting.png"
+
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/dstoolkit-forecasting'
+  arm_template: ""
+
+industries: 
+  - Energy
+  - Financial Services & Insurance
+  - Manufacturing  
+  - Retail
+  - Sustainability
+tags: 
+  - Forecasting
+  - Timeseries
+  - Clustering
+  - Intermittent Demand
+assetType: "Accelerator"

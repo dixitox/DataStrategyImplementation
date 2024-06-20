@@ -1,0 +1,39 @@
+id: d95f68f3-2ac8-4966-8aad-b0237ed5668e
+name: "Fuzzy Matching"
+tagline: "Help to develop data-driven insights from disparate data sources in which there are missing keys, messy data and/or unstructured data."
+authors: 
+  - name: "Karsten Strøbæk"
+    github_alias: "strobaek"
+business_problem: Fuzzy matching is used in situations in which data-driven insights are required from disparate data sources but in which there are missing keys, messy data and/or unstructured data.
+business_value: Relating data that does not have a primary-key relationship is helpful in many use cases, for example matching product SKUs for master data, matching people to skills for project management etc.
+accelerator_description: "Best practices and resources for implementing fuzzy matching solutions. The repository is broken down into the following sections.
+ \n- Data Management (record linkage)
+ \n- People Matching
+ \n- Knowledge Graphs"
+modeling_approach_and_training: |
+ Jupyter notebooks use sample data of company names from Nasdaq and S&P 500 data and use fuzzywuzzy and dask to implement  fuzzy matching at scale. 
+value: The accelerator is useful to describe approaches and show examples of 'fuzzy matching', best practices by means of example notebooks.
+data: Kaggle Sample dataset is provided.
+architecture:
+  "- Azure Machine Learning
+  \n- Jupyter Notebooks
+  \n- Python"
+images:
+   screenshot_filename: "fuzzy-matching.png"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/dstoolkit-fuzzymatching-v2'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Automotives
+  - Energy
+  - Financial Services & Insurance
+  - Media
+  - Sustainability
+  - Healthcare
+tags: 
+  - Fuzzy Matching
+assetType: "Accelerator"

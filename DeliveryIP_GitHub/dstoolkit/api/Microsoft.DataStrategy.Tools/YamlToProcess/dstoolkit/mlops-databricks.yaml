@@ -1,0 +1,53 @@
+id: f642d55c-6f9a-4df4-b212-9158a3298f3c
+name: "ML Ops for Databricks"
+tagline: "Enterprise scale ML Ops using Databricks as the platform."
+authors: 
+  - name: "Ciaran Hamill Diamond"
+    github_alias: "ciaran28"
+  - name: "Davide Fornelli"
+    github_alias: "davidefornelli"
+  - name: "Spyron Marketos"
+    github_alias: ""
+  - name: "Samarendra Panda"
+    github_alias: ""
+business_problem: Managing large teams of data engineers and data scientist presents challenges for collaboration and consistency of dev / test / prod environments. 
+business_value: The ML Ops for Databricks accelerator helps teams to collaborate, develop and deploy ML data prodcuts through a robust CI/CD process.
+accelerator_description: "The accelerator is fully configurable and can create up to 4 environments (Dev / UAT / Pre-prod / Prod)
+ \n- Full CI/CD between environments
+ \n- Infrastructure as code interaction with Databricks API and Classification
+ \n- Azure Service Principle authentication
+ \n- Resource deployment using Bicep
+ \n- Examples given within development framework using Python SDK for Databricks
+ \n- Databricks Feature Store, MLFlow Tracking, Model Registry and Model Experiments.
+ \n- DBX by Data Labs for Continuous Deployment of jobs, workflows
+ \n- Databricks connect
+ \n- Docker Environment"
+modeling_approach_and_training: Model agnostic
+  
+value: Accelerate the implementation of Databricks, full CI/CD and ML Ops support.
+data: Data type agnostic
+architecture:
+  "- Azure Databricks
+  \n- Application Insights
+  \n- Log analytics
+  \n- Azure Key Vault
+  \n- Azure Storage Account"
+images:
+  screenshot_filename: "ML-Ops-for-Databricks.png"
+links:
+  demo: "https://www.youtube.com/embed/Q3DNOgIu6rk"
+  source_code: 'https://github.com/microsoft/dstoolkit-mlops-databricks'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Automotives
+  - Energy
+  - Financial Services & Insurance
+  - Media
+  - Sustainability
+  - Healthcare
+tags: 
+  - ML Ops
+assetType: "Accelerator"

@@ -1,0 +1,44 @@
+id: 75168078-ff28-4ea8-8f13-6ca632c80f2d
+name: "Azure Data Labs"
+tagline: "Quickly deploy Azure Data services using Terraform and GitHub Actions."
+authors: 
+  - name: "Aitor Murguzur"
+    github_alias: "murggu"
+  - name: "Walter Grasselli"
+    github_alias: "waltergrasselli"
+  - name: "Jorge Docampo"
+    github_alias: "jdocampo"
+business_problem: Consistency in deployment, cost control, compliance and security are challenges for IT teams especially when business requires data labs or environments in which to create their data products.
+business_value: Azure Data Labs is extensible, helps achieve lower cost of ownership and reduces the time taken to create environments for data teams to create their data products.
+accelerator_description: Azure Data Labs includes a library of curated Terraform modules as well as a Continuous Integration (CI) environment using GitHub Actions for modules' validation and deployment.
+modeling_approach_and_training: |
+  --
+value:
+  "\n- Reduce time to deploy
+  \n- Increase consistency of environments
+  \n- Works with Azure Deployment environments
+  \n- Secure by Default"
+data: 
+architecture:
+  "- Azure Data Services
+  \n- GitHub Actions
+  \n- Terraform"
+images:
+  screenshot_filename: "azure-data-labs.png"
+links:
+  demo: ""
+  source_code: 'https://github.com/Azure/azure-data-labs-modules'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Automotives
+  - Energy
+  - Financial Services & Insurance
+  - Media
+  - Sustainability
+  - Healthcare
+tags: 
+  - IaaS
+assetType: "Accelerator"

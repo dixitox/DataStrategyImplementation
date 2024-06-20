@@ -1,0 +1,32 @@
+﻿id: 13598990-9f18-44e0-8b68-cbfbe74a2533
+name: "VAT Tax anomaly detection"
+tagline: "Reduce tax gap and increase revenue collection while reducing tax evasion"
+authors: 
+  - name: "Nejhdeh Ghevondian"
+    github_alias: "neghevo_microsoft"
+  - name: "Kyoichi Iwasaki"
+    github_alias: "kyiwasak_microsoft"
+business_problem: Accelerate Tax Agencies goal to reduce tax gap and increase revenue collection while reducing tax evasion and investment in people, technology, and processes to optimize their use of business data.
+
+business_value: Automatic monitoring and detection of VAT tax anomaly and fraud detection
+accelerator_description: VAT tax anomaly detection is an end-to-end solution for businesses requiring anomaly and fraud detection of the taxes
+modeling_approach_and_training: Data processing, data-drift analysis, further feature engineering, model preparation, statistical model drift, anomaly scoring and generate outputs for visualization
+value: Automatic monitoring and detection of VAT tax anomaly and fraud detection
+data: Tabulated data and PDF files
+architecture: Azure Synapse and Azure Machine Learning
+images:
+  screenshot_filename: ""
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/datastrategy-acts'
+  arm_template: ''
+industries: 
+  - Government
+  - Financial Services & Insurance
+  - Public Sector
+tags: 
+  - Data drift
+  - Azure Synapse
+  - anomaly detection
+  - Isolation Forest
+assetType: "Accelerator" ## Need to check

@@ -1,0 +1,56 @@
+id: 858322f5-9b8f-48b5-8b4d-8ac5a23b2c76
+name: "ML Ops"
+tagline: "Configurable CI/CD Pipelines, Machine Learning Pipelines and compute resources to deploy ML models."
+authors: 
+  - name: "Florian Pydde"
+    github_alias: "FlorianPydde"
+  - name: "Maria Medina"
+    github_alias: "mariamedp"
+  - name: "Trang Nguyen"
+    github_alias: "tranguyen221"
+  - name: "Liana Napalkova"
+    github_alias: "LianaN"
+  - name: "Yvonne Barth"
+    github_alias: "yvonnebarthp"
+  - name: "Kyoichi Iwasaki"
+    github_alias: "kyoro1"
+  - name: "Farah Saab"
+    github_alias: "Farah-Saab"
+  - name: "Davide Fornelli"
+    github_alias: "davidefornelli"
+business_problem: Many AI projects never reach the production stage and do not deliver expected business results due to a lack of common approach in a multi-disciplinary team .
+business_value: 
+  "\n- Increased speed to production \n– KPI project timeline, sprint cadence
+  \n- Improved system tracking and reporting
+  \n- Cost reduction \n– KPI Azure infrastructure costs"
+accelerator_description: This accelerator provides a template for repeatable, consistent and easy to deploy MLOps to bring ML models to production and help data science teams to focus on AI aspects and specific customer nuances and enabling multi-disciplinary team collaboration.
+modeling_approach_and_training: |
+  The workflow uses Azure Devops for the CI/CD pipelines and manages artefacts (model and data) replication in different environments. It also leverages the AzureML python library to manage the run automated model training, store the model artefacts and create inference endpoints
+value:
+  "- Build in automation to enable a continuous delivery and continuous integration pipeline
+  \n- Ensure ML models have required governance and operational discipline related to data quality, security and compliance, and access.
+  \n- Enable monitoring & performance data collection across the build and inference pipeline, enabling a predictable ML operating environment."
+
+data: This accelerator leverage Azure ML Datasets to handle versioning and replication among different environments.
+architecture:
+  "- Azure Machine Learning
+  \n- Azure DevOps"
+images:
+  screenshot_filename: "ML-Ops.png"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/dstoolkit-mlops-base'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Automotives
+  - Energy
+  - Financial Services & Insurance
+  - Media
+  - Sustainability
+  - Healthcare
+tags: 
+  - ML Ops
+assetType: "Accelerator"

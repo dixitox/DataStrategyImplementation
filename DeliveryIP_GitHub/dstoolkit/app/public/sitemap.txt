@@ -1,0 +1,2 @@
+__web_url__
+__web_url__/search

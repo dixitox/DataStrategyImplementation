@@ -1,0 +1,38 @@
+id: 0d7dd985-4e3a-4119-a90a-f1321d66fda5
+name: "Vitastic"
+tagline: "Quickly build web interfaces for object detection, segmentation or classification models."
+authors: 
+  - name: "Hong Zhu"
+    github_alias: "felihong"
+  - name: "Karsten Strøbæk"
+    github_alias: "strobaek"
+business_problem: Create a web application that serves classification, object detection, and object segmentation models hosted in Azure custom vision and ML.
+business_value: Support customizable Microsoft native design components using open source FluentUI framework, allow users to quickly build a web app with no front-end development prerequisites required.  
+accelerator_description: This accelerator helps to quickly build a web application that serves object detection, classification, and segmentation workloads. By leveraging Microsoft's themable React library FluentUI powered by Flask backend,  Vitastic allows the users to build their own UI to demonstrate pre-trained models running in Azure.
+modeling_approach_and_training: Vitastic serves computer vision models that are hosted in either Azure ML or custom vision. It allow the users to configure the models to be demonstrated, select the visualization style in use, and additional detection reports to be presented.
+value: This accelerator provides a solution for non frontend experts to quickly build an UI for model demonstration and testing in a customizable manner.
+data: A callable REST endpoint of pre-trained model should be prepared. In addition, users can provide up to 8 testing images used as template, as well as further images to be tested by the model.
+architecture:
+ "- Azure Machine Learning
+ \n- Azure Custom Vision
+ \n- Microsoft Fluent-UI framework
+ \n- Python Flask framework"
+images:
+  screenshot_filename: "vitastic.jpg"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/dstoolkit-vitastic'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Automotives
+  - Energy
+  - Financial Services & Insurance
+  - Media
+  - Sustainability
+  - Healthcare
+tags: 
+  - NLP
+assetType: "Accelerator"

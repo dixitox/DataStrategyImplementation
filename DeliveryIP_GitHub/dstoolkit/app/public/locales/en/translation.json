@@ -1,0 +1,231 @@
+{
+    "common": {
+        "title": "Data Science Toolkit",
+        "see-more": "See more",
+        "submit": "Submit",
+        "loading": "Loading...",
+        "add": "Add",
+        "edit": "Edit",
+        "delete": "Delete",
+        "save": "Save",
+        "all": "All",
+        "search": "Search",
+        "instructions": "Instructions",
+        "attach": "Attach",
+        "upload": "Upload",
+        "forbidden": "Forbidden. Sorry, you are not allowed to perform this operation.",
+        "error": "Sorry, an error occurred while processing your request.",
+        "yes": "Yes",
+        "no": "No",
+        "view-list": "List View",
+        "view-cards": "Cards View",
+        "confirm": "Confirm",
+        "sort-by": "Sort by:",
+        "add-new": "Add new",
+        "dismiss": "Dismiss"
+    },
+    "components": {
+        "header-bar": {
+            "home": "Home",
+            "assets": "Assets",
+            "contribute": "Contribute",
+            "blog": "Blog",
+            "sign-in": "Sign in",
+            "sign-out": "Sign out",
+            "manage-assets": "Manage Assets",
+            "analytics-report": "Analytics Report",
+            "dstoolkit-link": "Public Assets"
+        },
+        "cookies-policies": {
+            "cookies-policy": "We use optional cookies to improve your experience on our website understanding how you use it so we can improve it. If you reject optional cookies, only cookies necessary to provide you the services will be used.",
+            "privacy-statement": "Privacy Statement",
+            "accept": "Accept",
+            "reject": "Reject"
+        },
+        "filter": {
+            "title": "Filter",
+            "industry": "Industry",
+            "machine-learning": "Machine Learning",
+            "asset-type": "Asset Type",
+            "clear-all": "Clear all"
+        },
+        "footer": {
+            "contact": "Contact Microsoft",
+            "privacy": "Privacy",
+            "manage-cookies": "Manage cookies",
+            "global-privacy": "Global Data Privacy Notice",
+            "trademarks": "Trademarks",
+            "terms-of-use": "Terms of use",
+            "copyright": "© Microsoft 2023"
+        },
+        "asset-card": {
+            "created": "Created",
+            "by": "by"
+        },
+        "search-box": {
+            "label": "I am looking for",
+            "placeholder": "e.g. visual inspection"
+        },
+        "acr-info": {
+            "title": "How To",
+            "intro": "In order to host your demo, it must be containerized on Docker. This requirement allows us to standardize the hosting of asset demos.\nPlease push your image to our instance of Azure Container Registry (ACR) and fill the image name in the following form.\nBe sure your application works with relatives path and does not have any reference to the root (example: links to \"/yourfile.js\" should be \"yourfile.js\" or \"./yourfile.js\")\nBefore starting you need to join the Security Group that will enable you to access the ACR clicking",
+            "intro-link": "here",
+            "body": "Give approximately 30 minutes for the changes to be propagated to be sure you have access to the ACR. Then execute the following Azure CLI instructions in a Powershell terminal to authenticate, build and push the image:",
+            "footer": "Please use the Comments field to add any requirements or specific configurations that might be needed for these images."
+        }
+    },
+    "entities": {
+        "asset": {
+            "name": "Asset Name",
+            "tagline": "Tagline",
+            "asset-type": "Asset Type",
+            "asset-type-accelerator": "Accelerator",
+            "asset-type-demo": "Demo",
+            "created-by": "Submitted by",
+            "created-on": "Submitted On",
+            "author_one": "Contributor",
+            "author_other": "Contributors",
+            "author-name": "Name",
+            "author-git-hub-alias": "Github alias",
+            "author-linkedin": "Linkedin profile",
+            "enabled": "Enabled?",
+            "description": "Description",
+            "description-placeholder": "Describe the accelerator: what it does, how it does, etc. You may copy the content of your repository's README file.",
+            "business-problem": "Business Problem",
+            "business-problem-placeholder": "Describe the problem that you are solving with the accelerator or that you are showcasing with the demo. For example: identifying faulty parts in a manufacturing plant, identifying new customers, optimising scheduling operations, etc.",
+            "business-value": "Business Value",
+            "business-value-placeholder": "Describe the value that the clients are getting from the solution through. It could be specific metrics or KPI established during the project (number of new customers, energy consumption) from OKRS, or simply examples like \"cost reduction\", \"sales increase\", \"time reduction\", etc.",
+            "industries": "Industries",
+            "accelerator-description": "Asset Description",
+            "modeling-approach-and-training": "Modeling Approach and Training",
+            "modeling-approach-and-training-placeholder": "If applicable, explain what AI/ML/statistical approach you used to solve the problem. If not, simply provide an \"NA\" or \"-\" character.",
+            "ml-type": "ML Type",
+            "tags": "Tags",
+            "data": "Dataset Summary",
+            "data-placeholder": "If applicable, provide a high-level description of your data like type (audio, textual, tabular, …).",
+            "workflow-url": "Workflow Url",
+            "workflow-url-placeholder": "If applicable, provide the GitHub Workflow Url that deploys the asset.",
+            "architecture": "Architecture",
+            "architecture-placeholder": "Provide a list of Azure components used in the accelerator (Azure Machine Learning, Synapse, Kubernetes, …).",
+            "demo": "Demo",
+            "demo-url": "Demo URL",
+            "deploy": "Deploy to Azure",
+            "community-review": "Community Review",
+            "acr-repository-name": "Docker Image Title",
+            "arm-template": "ARM Template",
+            "arm-template-placeholder": "If available, provide a link to the ARM Template",
+            "repository-url": "GitHub repository",
+            "repository-url-placeholder": "https://github.com/<organization>/<repository name>",
+            "repository-url-info": "To facilitate the review process we recommend you to join the Microsoft Open Source organization on Github by linking your Github account.\n<a href=\"https://repos.opensource.microsoft.com/link\" target=\"_blank\">https://repos.opensource.microsoft.com/link</a>",
+            "screenshot": "Image Screenshot",
+            "alternative-text": "Image description",
+            "comments": "Comments",
+            "comments-placeholder": "Any comments you'd like to share with us. They will not appear in the description of the accelerator's page."
+        },
+        "sort-criteria": {
+            "relevance": "Relevance",
+            "recentlyupdated": "Most Recently Updated",
+            "name": "Name"
+        },
+        "deployment-history": {
+            "deployment-history": "Deployment History",
+            "environment": "Environment",
+            "runId": "Run Id",
+            "updatedOn": "Last Updated On",
+            "updatedBy": "Last Updated By"
+        },
+        "blog": {
+            "entrytype": "Type",
+            "entrytype-announcement": "Announcement",
+            "entrytype-guidance": "Guidance",
+            "status": "Status",
+            "status-draft": "Draft",
+            "status-published": "Published",
+            "created": "Created",
+            "title": "Title",
+            "introduction": "Introduction",
+            "introduction-infopopover": "This information is shown only in the blog list but not in the blog post detailed page",
+            "body": "Main content",
+            "hero-image": "Header image",
+            "alternative-text": "Image description",
+            "author_zero": "Author",
+            "author_one": "Author",
+            "author_other": "Authors",
+            "author-name": "Name",
+            "author-git-hub-alias": "Github alias",
+            "author-linkedin": "Linkedin profile"
+        }
+    },
+    "pages": {
+        "home": {
+            "title": "Discover your toolkit",
+            "subtitle": "The data science toolkit is an open-source collection of proven ML and AI implementation accelerators. Accelerators enable the automation of commonly repeated development processes to allow data science practitioners focus on delivering complex business value and spend less time on basic setup.",
+            "no-results": "No results found. :(",
+            "no-results-no-match": "We couldn't find a match for ‘{{query}}’",
+            "no-results-footer": "Please try another search",
+            "search-results_one": "{{count}} result for",
+            "search-results_other": "{{count}} results for",
+            "search-in": "in Data Science Toolkit"
+        },
+        "asset": {
+            "asset-content": "Asset Content",
+            "source-button": "Github",
+            "deploy-to-sandbox": "Deploy to Sandbox",
+            "deploy-to-prod": "Deploy to Production",
+            "deploy-ok": "The Deployment has been requested.",
+            "deploy-fail": "The Deployment can't be request. Check environments status for this asset."
+        },
+        "editor": {
+            "how-to": "How to Contribute?",
+            "title-update": "Update asset",
+            "title-new": "Add new asset",
+            "page-content": "Page Content",
+            "contribute-new": "I want to add my asset to the Toolkit.",
+            "contribute-other": "I want to contribute to an asset that already exists on GitHub.",
+            "demo-situation": "Select below how to host your demo.",
+            "demo-situation-demourl": "I have a URL to my demo",
+            "demo-situation-hostdemo": "I need to host a demo",
+            "submitted-ok": "Thank you. The asset was submitted for evaluation.",
+            "updated-ok": "Thank you. The asset was updated.",
+            "contact-title": "How to contribute",
+            "contact-intro": "1. Access the GitHub repo with the asset of interest.\n2. Once you are in the repo:\n-Check for open issues and choose the issue you would like to contribute to.\n-Assign the issue to yourself.\n-Create a branch with the feature/issue name (please pay attention nomenclature to avoid confusion).\n-Submit your branch for review.\n-If approved, merge with master. If not, edit accordingly.\n-If you found an issue but there is no existing one, create it and follow the above steps.",
+            "contact-optional": "Optional",
+            "contact-additional": "Contact us if you have additional questions.",
+            "contact-placeholder": "Enter any additional questions or comments here.",
+            "contact-sent": "Thank you for your inquiry. We will get back to you soon."
+        },
+        "manage": {
+            "title": "Asset Management",
+            "filter-state": "State",
+            "filter-state-true": "Enabled",
+            "filter-state-false": "Disabled",
+            "confirm-deletion": "The asset will be permanently removed from the system.\nDo you wish to proceed?"
+        },
+        "analytics-report": {
+            "title": "Analytics Report"
+        },
+        "deployment-history": {
+            "title": "Deployment History",
+            "filter-environment": "Environment",
+            "filter-environment-false": "Sandbox",
+            "filter-environment-true": "Production",
+            "no-deployments-found": "No deployments have been found yet."
+        },
+        "blog-list": {
+            "title": "Blog",
+            "confirm-deletion": "The blog entry will be permanently removed from the system.\nDo you wish to proceed?"
+        },
+        "blog-editor": {
+            "title-left": "Blog",
+            "title-create": "New blog entry",
+            "title-update": "Edit blog entry",
+            "placeholder": "Enter some text...",
+            "submitted-ok": "The blog entry was created.",
+            "updated-ok": "The blog entry was updated.",
+            "read-here": "Read it here:"
+        },
+        "blog-viewer": {
+            "title-left": "Blog"
+        }
+    }
+}

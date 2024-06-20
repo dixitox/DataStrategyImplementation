@@ -1,0 +1,53 @@
+id: 3b4fafba-7e09-4557-b0b5-1985a27684d7
+name: "Knowledge Mining Accelerator"
+tagline: "AI-driven web and data exploration, unstructured data insight extraction."
+authors: 
+  - name: "Nicolas Uthurriague"
+    github_alias: "puthurr"
+  - name: "Harika Nagidi"
+    github_alias: "harikanagidi"
+  - name: "Preeti Teotia"
+    github_alias: "Preeti1910"
+business_problem: Unstructured data volume is overwhelming business users as well as harming their productivity by generating unnecessary insights, searchability & discoverability obstacles.
+business_value: End-to-End solution to mine unstructured data into business high-value actionable with better insights, full searchability & great discoverability.
+accelerator_description: Knowledge mining (KM) is an emerging discipline in artificial intelligence (AI) that uses a combination of intelligent services to quickly learn from vast amounts of information. It allows organizations to deeply understand and easily explore information, uncover hidden insights, and find relationships and patterns at scale.
+modeling_approach_and_training: "Approach take for Knowledge mining with this accelerator
+ \n- Ingestion from Azure Data Lake
+ \n- Enrichment with Azure Applied AI and Cognitive Services
+ \n- Exploration
+ \n- Keyword and Semantic search
+ \n- Content security model (permissions)
+ \n- Tables extraction including Key-Values
+ \n- OCR all images-based content
+ \n- Deep document search to page or slide level"
+
+value: "This accelerator provides you with a workable end-to-end Knowledge Mining solution. 
+ \n- Easy deployment in Azure (CI/CD)
+ \n- Quick time to market
+ \n- One code-base for multiple deployments"
+
+data: This accelerator provides some sample data to highlight our mining capabilities including non-English documents. The users can upload or copy their own data in the documents container to evaluate more data mining scenarios. 
+architecture:
+ "- Azure Cognitive Search
+ \n- Azure Cognitive Services 
+ \n- Azure Functions
+ \n- Azure App Services
+ \n- Azure Storage"
+
+images:
+  screenshot_filename: "knowledge-mining.png"
+links:
+  demo: "https://dstkkmui.azurewebsites.net/"
+  source_code: 'https://github.com/microsoft/dstoolkit-km-solution-accelerator'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Automotives
+  - Energy
+  - Financial Services & Insurance
+  - Media
+  - Sustainability
+  - Healthcare
+tags: 
+  - Knowledge Mining
+assetType: "Accelerator"

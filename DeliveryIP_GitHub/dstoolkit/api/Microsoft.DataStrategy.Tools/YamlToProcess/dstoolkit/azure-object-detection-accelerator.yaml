@@ -1,0 +1,49 @@
+id: e592804c-7db8-4266-a579-6155be176f2b
+name: "Azure Object Detection"
+tagline: "Custom computer vision accelerator, with rapid deployment and configuration for cloud and edge scenarios."
+authors: 
+  - name: "Daniel Baumann"
+    github_alias: "d-baumann"
+  - name: "Karsten Strøbæk"
+    github_alias: "strobaek"
+  - name: "Ben Constable"
+    github_alias: "BenConstable9"
+  
+business_problem: "Solve business use-cases that include
+ \n- Locating a target object or objects in images
+ \n- Differentiate object types in images
+ \n- Determine the sizes of objects in images"
+
+business_value: "Automate visual tasks for example, 
+ \n- Product inspection
+ \n- Quality control / Defect detection
+ \n- Item counting
+ \n- Document analysis
+ \n- Medical image analysis
+ \n- Store surveilance"
+
+accelerator_description: This repository serves as a starting point and accelerator for object detection projects on Azure. The walkthrough will help quickly setup training, labelling, inference, testing and deployment pipelines within a few minutes of setup. A starter dataset is generated for demonstration purposes to illustrate where to place project data. The pipelines clearly show the steps required so that changes can be easily made as required.
+modeling_approach_and_training: The repo maintains a collection of different models. Pipelines automate the training. Users can configure the pipelines to use different models and datasets.
+
+value: Fast and simple end-to-end setup of a sample object detection solution on Azure and customizable pipelines to accelerate computer vision projects.
+data: A synthetic dataset is provided as a starting point and instructions are given on how to replace the dataset with project specific data. 
+architecture:
+  "- Azure DevOps
+  \n- Azure Machine Learning
+  \n- Custom Vision, Yolo V5, Yolo V7, Yolo V8"
+images:
+  screenshot_filename: "azure-object-detection-accelerator.png"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/dstoolkit-azoda'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Automotives
+  - Sustainability
+  - Healthcare
+tags: 
+  - Computer Vision
+assetType: "Accelerator"

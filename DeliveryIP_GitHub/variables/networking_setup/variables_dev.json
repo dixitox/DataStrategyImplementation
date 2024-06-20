@@ -1,0 +1,61 @@
+{
+
+    "AllowAccessToIpRange": false,
+    "IpRangeCidr": "0.0.0.0",
+    "IpRangeStart": "0.0.0.0",
+    "IpRangeEnd": "0.0.0.0",
+
+    "DeployNewVnet": false,
+    "NewVnetAddressSpace": "10.253.0.0/18",
+
+    "VnetForResourcesRgName": "dataStrategyGHDemo-VNET-VM",
+    "VnetForResourcesName": "dsdemovnetdev60",
+
+    "DeployLogicAppInVnet": true,
+    "LogicAppSubnetName": "logicAppSubnet",
+    
+    "DeployMLWorkspaceInManagedVnet": false,
+    "DeployMLWorkspaceInCustomerVnet": true,
+    "MLComputeSubnetName": "mlSubnet",
+
+    "DeployDatabricksInVnet": true,
+    "VnetForDatabricksRgName": "dataStrategyGHDemo-VNET-VM",
+    "VnetForDatabricksName": "dsdemovnetdev60",
+    "DatabricksPublicSubnetName": "publicSubnet",
+    "DatabricksPrivateSubnetName": "privateSubnet",
+
+    "VnetForDatabricksTransitSubscriptionId": "9dead2a6-050b-4aa6-bc86-a4e53fbb12c8",
+    "VnetForDatabricksTransitRgName": "dataStrategyGHDemo-VNET-VM",
+    "VnetForDatabricksTransitName": "hstest67",
+    "DatabricksTransitPESubnetName": "default",
+
+    "DeployOpenAiDemoAppInVnet": true,
+    "OpenAiDemoAppSubnetName": "openAiDemoAppSubnet",
+
+    "CreatePrivateEndpoints": true,
+    "CreatePrivateEndpointsInSameRgAsResource": true,
+    "UseManualPrivateLinkServiceConnections": false,
+
+    "VnetforPrivateEndpointsRgName": "dataStrategyGHDemo-VNET-VM",
+    "VnetforPrivateEndpointsName": "dsdemovnetdev60",
+    "PrivateEndpointSubnetName": "AzurePaasResources",
+
+    "PrivateEndpointId": "dev",
+
+    "CreateNewPrivateDNSZones": false,
+    "PrivateDNSZoneRgName": "dataStrategyGHDemo-VNET-VM",
+
+    "DeployADFPortalPrivateEndpoint": true,
+    "DeploySynapseWebPrivateEndpoint": false,
+    "DeployPurviewPrivateEndpoints": true,
+    "DeployPurviewIngestionPrivateEndpoints": true,
+
+    "RedeploymentAfterNetworkingIsSetUp": false,
+
+    "DeployVMswithBastion": false,
+    "JumpBoxSubnetName": "jumpbox",
+    "vmsPerEnv": 2,
+    "vmName": "dsdemovmdev60",
+    "bastionName": "dsdemobastiondev60"
+
+}

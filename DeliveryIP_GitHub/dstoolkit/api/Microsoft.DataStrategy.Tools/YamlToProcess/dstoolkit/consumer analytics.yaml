@@ -1,0 +1,28 @@
+id: ef47980f-2a62-4854-b3dd-da15429bff7f
+name: "Consumer Analytics"
+tagline: "Analyze customer lifetime value and customer churn rates."
+authors:
+  - name: "Benjamin Keen"
+    github_alias: "benalexkeen"
+business_problem: It can be difficult to determine how much you spend on marketing when targeting customers. In this accelerator you can learn more about your customers with regards to how likely they are to churn and what their customer lifetime value will be. As the churn probability of a customer increases, consider marketing intervention to prevent customer churn.
+business_value: "- New insights into customer spending habits \n- More effective apportioning of marketing budgets"
+accelerator_description: This is a self service tool to allow you to upload your own customer data or use sample data to see customer insights with an interactive tool to allow you to determine customer lifetime value given a customer's spending habits
+modeling_approach_and_training: This is a simple flask application that wraps python's lifetimes library. It uses a Beta-Geometric to determine customer churn and combines this with a Gamma-Gamma model of monetary value to determine Customer Lifetime Value. Models are trained as data is uploaded and currently there is no caching of data.
+value:
+  "\n- Easy and immediate insights into customers
+  \n- Deploy to your own subscription to ensure your data never leaves your tenant"
+data: Tabular data. The data required for this accelerator is the frequency (number of transactions), the recency in weeks (how recently did they last purchase), the time since their first purchase in weeks, and the average monetary value of their transactions.
+architecture:
+  "- Azure App Services
+  \n- flask"
+images:
+  screenshot_filename: "consumer_analytics.png"
+links:
+  demo: "https://demos.ds-toolkit.com/consumer/"
+  source_code: 'https://github.com/microsoft/dstoolkit-ai-ux/tree/main/visualizations/consumer_analytics'
+  arm_template: ''
+industries: 
+  - Retail
+tags: 
+  - Regression
+assetType: "Demo"

@@ -1,0 +1,76 @@
+{
+    "azureResourceLocation": "eastus2",
+
+    "PrimaryRgName": "dataStrategyGHDemoProd",
+
+    "tags": {
+        "env": "prod"
+    },
+
+    "fabricCapacityName": "dsdemoprodeu2fabric01",
+
+    "fabricSKU": "F2",
+    
+    "synapseWorkspaceName": "dsdemo-prod-use-syn-noexfil-02",
+
+    "dataFactoryName": "dsdemo-prod-use-adf-01",
+
+    "azureSQLServerName": "dsdemo-prod-use-sql-01",
+    "azureSQLServerDBName": "MetadataControl",
+
+    "keyVaultName": "dsdemo-prod-use-kv-01",
+
+    "dataLakeName": "dsdemodatalakeprod60",
+
+    "landingStorageName": "dsdemolandingstgprod60",
+
+    "LogicAppRgName": "dataStrategyGHDemoProd-Logic",
+
+    "logicAppName": "dsdemo-prod-use-logic-01",
+
+    "logicAppServicePlanName": "dsdemo-prod-use-logic-asp-01",
+
+    "logicAppStorageName": "dsdemoproduselogicst01",
+
+    "logicAppInsightsName": "dsdemo-prod-use-logic-appi-01",
+
+    "purviewName": "dsdemo-prod-use-pview-01",
+
+    "logAnalyticsName": "dsdemo-prod-use-log-01",
+
+    "MlRgName": "dataStrategyGHDemoProd-ML",
+
+    "mlWorkspaceName": "dsdemo-prod-use-mlw-01",
+
+    "mlWorkspaceKeyVaultName": "dsdemo-prod-use-mlwkv-01",
+
+    "mlStorageName": "dsdemoprodusemlwst01",
+
+    "mlAppInsightsName": "dsdemo-prod-use-mlw-appi-01",
+
+    "mlContainerRegistryName": "dsdemoprodusemlwcr01",
+
+    "databricksWorkspaceName": "dsdemo-prod-eu2-dbw-02",
+
+    "cognitiveServiceName": "dsdemo-prod-use-cog-01",
+
+    "eventHubNamespaceName": "dsdemo-prod-use-evhns-01",
+
+    "streamAnalyticsName": "dsdemo-prod-use-asa-01",
+
+    "OpenAIRgName": "rg-dsdemo-prod-eu2-openai",
+
+    "OpenAIServiceName": "dsdemo-prod-eu2-oai-01",
+
+    "OpenAICognitiveSearchName": "dsdemo-prod-eu2-cs-01",
+
+    "OpenAIDemoAppName": "dsdemo-prod-eu2-oaapp-01",
+
+    "OpenAIDemoAppInsightsName": "dsdemo-prod-eu2-oaappi-01",
+
+    "OpenAIDemoKeyVaultName": "dsdemo-prod-eu2-oakv-01",
+
+    "OpenAIDemoDocumentIntelligenceName": "dsdemo-prod-eu2-di-01",
+    
+    "OpenAIDemoAppServicePlanName": "dsdemo-prod-eu2-oaasp-01"
+}

@@ -1,0 +1,46 @@
+name: "Glue - Cognitive Services Accelerator"
+id: 10855150-f093-4952-9501-c0b6089e4138
+tagline: "Lightweight, Python-based script collection to help with Speech-to-Text use-cases."
+authors: 
+  - name: "Timm Walz"
+    github_alias: "nonstoptimm"
+business_problem: "- Automated generation of synthetic speech-model training data.
+  \n- Batch transcription of audio files and evaluation against a reference transcript."
+  
+business_value: "Automatically extract information from audio or text files to speed up information retrieval or service quality control as, for instance, for contact center conversations.  Save time, quickly get insight from call or text data."
+
+accelerator_description: "Glue consists of a series of Python scripts and an orchestrator to enable batch processing by using Microsoft Cognitive Services. This accelerator enables:
+ \n- Audio files to be transcribed to text (for analysis of contact center conversations)
+ \n- Synthesis of text data to speech for text-to-speech applications.
+ \n- Evaluation of reference transcripts and recognitions. 
+ \n- Scoring of text strings on an existing, pre-trained Microsoft LUIS model."
+ 
+modeling_approach_and_training: Microsoft Cognitive Services
+  
+data: "Audio and text files"
+
+architecture: "- Microsoft Speech to Text Service (STT)
+  \n- Microsoft Text to Speech Service (TTS).
+  \n- Pre-trained Microsoft LUIS-model.
+  \n- Python 
+  \n- VSCode
+  \n- ffmpeg"
+images:
+  screenshot_filename: "glue.png"
+links:
+  demo: ""
+  source_code: 'https://github.com/microsoft/glue'
+  arm_template: ''
+industries: 
+  - Manufacturing
+  - Retail
+  - Agriculture
+  - Automotives
+  - Energy
+  - Financial Services & Insurance
+  - Media
+  - Sustainability
+  - Healthcare
+tags: 
+  - NLP
+assetType: "Accelerator"

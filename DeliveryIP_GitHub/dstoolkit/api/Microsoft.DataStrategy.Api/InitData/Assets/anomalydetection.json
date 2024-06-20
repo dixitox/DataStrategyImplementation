@@ -1,0 +1,79 @@
+{
+  "businessProblem": "Anomaly detection is the ability to identify rare items or observations that don’t conform to normal or common patterns found in data. These outliers are important because they can indicate potential risks, control failures, or business opportunities. Moreover, they usually represent critical areas that need further examination or scrutiny. These events, characterized for being statistically different from the rest of the observations typically translate to a business problem such as: \n- credit card fraud, \n- failing machine in a server, \n- a cyber-attack, \n- variation in financial transactions \n However, sometimes they can also point out to new ways for doing things in a more effective way, like spotting productivity spikes. Common Anomaly Detection techniques are difficult to implement on very large sets of Data. The Anomaly Detection Accelerator, leverages the iJungle technique from Dr. Ricardo Castro, which solves this challenge, enabling anomaly detection on large sets of data.",
+  "businessValue": "Anomalies can negatively impact the business and generate huge costs. Thus, the accelerator can improve cost control and reduce surges in cost. \n- Reduced cost, \n- Reduced risk",
+  "description": "Anomaly detection is usually executed as a single threaded operation. The iJungle Anomaly Detection Approach uses a technique that enables parallel processing of anomaly detection, greatly increasing the speed at which anomalies can be detected on very large datasets. The code can be run in an on-premise setting or in the cloud. The repository includes a tutorial notebook for leveraging Azure Machine Learning capabilities like parallel training, and parallel evaluation to be able to reach high volume data analysis. It includes examples of how to use the iJungle approach as a series of notebooks for Azure Machine Learning and Azure Databricks",
+  "modelingApproachAndTraining": "Training and Inference Pipeline python / synapse notebooks are provided; these import the iJungle library to show how it is used on sample datasets.",
+  "data": "Tabular data containing outliers. The data is provided in the repository",
+  "architecture": "- Azure Machine Learning \n- Azure Databricks",
+  "screenshot": {
+    "path": "screenshots/anomaly-detection.png",
+    "altText": null
+  },
+  "sourceCode": "https://github.com/{0}/dstoolkit-anomaly-detection-ijungle",
+  "demoUrl": "",
+  "armTemplate": "",
+  "workflowName": null,
+  "id": "165c1cfd-91e6-4f2f-b662-c072b194bf1e",
+  "partitionKey": "1",
+  "name": "Anomaly Detection",
+  "tagline": "Anomaly Detection using the iJungle technique to detect anomalies in very large datasets.",
+  "industries": [
+    "Manufacturing",
+    "Energy",
+    "Financial Services & Insurance",
+    "Sustainability",
+    "Healthcare"
+  ],
+  "tags": [
+    "Anomaly"
+  ],
+  "authors": [
+    {
+      "name": "Ricardo Castro",
+      "email": "",
+      "githubAlias": "nonstoptimm",
+      "githubAvatar": null,
+      "twitter": null,
+      "linkedin": null
+    },
+    {
+      "name": "Gustavo Pabon",
+      "email": "",
+      "githubAlias": "gpabon",
+      "githubAvatar": "https://avatars.githubusercontent.com/u/546086?v=4",
+      "twitter": null,
+      "linkedin": null
+    },
+    {
+      "name": "Kyoichi Iwasaki",
+      "email": "",
+      "githubAlias": "kyoro1",
+      "githubAvatar": "https://avatars.githubusercontent.com/u/6315779?v=4",
+      "twitter": null,
+      "linkedin": null
+    }
+  ],
+  "order": 1,
+  "createdBy": {
+    "on": "2023-03-02T14:41:28.1884778+00:00",
+    "displayName": "Init Data",
+    "objectId": "",
+    "mail": "franspa@microsoft.com"
+  },
+  "releasedBy": {
+    "on": "2023-03-02T14:41:28.1884781+00:00",
+    "displayName": "Init Data",
+    "objectId": "",
+    "mail": "franspa@microsoft.com"
+  },
+  "lastChangedBy": {
+    "on": "2023-03-02T14:41:28.1884475+00:00",
+    "displayName": "Init Data",
+    "objectId": "",
+    "mail": "franspa@microsoft.com"
+  },
+  "assetType": [
+    "Accelerator"
+  ],
+  "enabled": true
+}

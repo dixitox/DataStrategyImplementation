@@ -1,0 +1,52 @@
+{
+    "DeployTestEnvironment": false,
+
+    "DeployResourcesWithPublicAccess": true,
+
+    "DeployWithCustomNetworking": false,
+
+    "Consumer_Assign_RBAC_On_Deployment": true,
+
+    "azureResourceLocation": "eastus2",
+
+    "tags": {
+        "env": "test"
+    },
+
+    "Entra_Group_for_Consumer": {
+        "Group_ID": "",
+        "Group_Name": ""
+    },
+
+    "NewResourceGroupName": "dataStrategyGHDemoConsumer",
+
+    "DeployNewSynapse": true,
+
+    "DeployNewSynapseArtifacts": true,
+
+    "NewSynapseWorkspaceName": "gen-eu2-syn-02",
+
+    "DeploySynapseWithDataExfiltrationProtection": false,
+
+    "DeployNewAzureSQL": true,
+
+    "DeployNewAzureSQLArtifacts": true,
+
+    "NewAzureSQLServerName": "gen-use-sql-11",
+
+    "DeployNewConsumerMlWorkspace": true,
+
+    "NewMlWorkspaceName": "gen-use-mlw-01",
+
+    "NewMlKeyVaultName": "gen-use-mlwkv-01",
+
+    "NewMlStorageName": "genusemlwst01",
+
+    "NewMlAppInsightsName": "gen-use-mlw-appi-01",
+
+    "NewMlContainerRegistryName": "genusemlwcr01",
+
+    "ConnectToExistingPurview": true,
+    "ConnectToExistingLogAnalytics": true,
+    "ConnectToExistingCognitiveService": true
+}
