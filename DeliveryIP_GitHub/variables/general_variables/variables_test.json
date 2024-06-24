@@ -1,76 +1,76 @@
 {
-    "azureResourceLocation": "eastus2",
+    "azureResourceLocation": "uksouth",
 
-    "PrimaryRgName": "dataStrategyGHDemoTest",
+    "PrimaryRgName": "rg-emdemo-test-uk-main",
 
     "tags": {
         "env": "test"
     },
 
-    "fabricCapacityName": "dsdemotesteu2fabric01",
+    "fabricCapacityName": "emdemotestukfabric01",
 
     "fabricSKU": "F2",
     
-    "synapseWorkspaceName": "dsdemo-test-use-syn-noexfil-02",
+    "synapseWorkspaceName": "emdemo-test-uk-syn-noexfil-02",
 
-    "dataFactoryName": "dsdemo-test-use-adf-01",
+    "dataFactoryName": "emdemo-test-uk-adf-01",
 
-    "azureSQLServerName": "dsdemo-test-use-sql-01",
+    "azureSQLServerName": "emdemo-test-uk-sql-01",
     "azureSQLServerDBName": "MetadataControl",
 
-    "keyVaultName": "dsdemo-test-use-kv-01",
+    "keyVaultName": "emdemo-test-uk-kv-01",
 
-    "dataLakeName": "dsdemodatalaketest60",
+    "dataLakeName": "emdemodatalaketest60",
 
-    "landingStorageName": "dsdemolandingstgtest60",
+    "landingStorageName": "emdemolandingstgtest60",
 
     "LogicAppRgName": "dataStrategyGHDemoTest-Logic",
 
-    "logicAppName": "dsdemo-test-use-logic-01",
+    "logicAppName": "emdemo-test-uk-logic-01",
 
-    "logicAppServicePlanName": "dsdemo-test-use-logic-asp-01",
+    "logicAppServicePlanName": "emdemo-test-uk-logic-asp-01",
 
-    "logicAppStorageName": "dsdemotestuselogicst01",
+    "logicAppStorageName": "emdemotestuklogicst01",
 
-    "logicAppInsightsName": "dsdemo-test-use-logic-appi-01",
+    "logicAppInsightsName": "emdemo-test-uk-logic-appi-01",
 
-    "purviewName": "dsdemo-test-use-pview-01",
+    "purviewName": "emdemo-test-uk-pview-01",
 
-    "logAnalyticsName": "dsdemo-test-use-log-01",
+    "logAnalyticsName": "emdemo-test-uk-log-01",
 
     "MlRgName": "dataStrategyGHDemoTest-ML",
 
-    "mlWorkspaceName": "dsdemo-test-use-mlw-01",
+    "mlWorkspaceName": "emdemo-test-uk-mlw-01",
 
-    "mlWorkspaceKeyVaultName": "dsdemo-test-use-mlwkv-01",
+    "mlWorkspaceKeyVaultName": "emdemo-test-uk-mlwkv-01",
 
-    "mlStorageName": "dsdemotestusemlwst01",
+    "mlStorageName": "emdemotestukmlwst01",
 
-    "mlAppInsightsName": "dsdemo-test-use-mlw-appi-01",
+    "mlAppInsightsName": "emdemo-test-uk-mlw-appi-01",
 
-    "mlContainerRegistryName": "dsdemotestusemlwcr01",
+    "mlContainerRegistryName": "emdemotestukmlwcr01",
 
-    "databricksWorkspaceName": "dsdemo-test-eu2-dbw-02",
+    "databricksWorkspaceName": "emdemo-test-eu2-dbw-02",
 
-    "cognitiveServiceName": "dsdemo-test-use-cog-01",
+    "cognitiveServiceName": "emdemo-test-uk-cog-01",
 
-    "eventHubNamespaceName": "dsdemo-test-use-evhns-01",
+    "eventHubNamespaceName": "emdemo-test-uk-evhns-01",
 
-    "streamAnalyticsName": "dsdemo-test-use-asa-01",
+    "streamAnalyticsName": "emdemo-test-uk-asa-01",
 
-    "OpenAIRgName": "rg-dsdemo-test-eu2-openai",
+    "OpenAIRgName": "rg-emdemo-test-eu2-openai",
 
-    "OpenAIServiceName": "dsdemo-test-eu2-oai-01",
+    "OpenAIServiceName": "emdemo-test-eu2-oai-01",
 
-    "OpenAICognitiveSearchName": "dsdemo-test-eu2-cs-01",
+    "OpenAICognitiveSearchName": "emdemo-test-eu2-cs-01",
 
-    "OpenAIDemoAppName": "dsdemo-test-eu2-oaapp-01",
+    "OpenAIDemoAppName": "emdemo-test-eu2-oaapp-01",
 
-    "OpenAIDemoAppInsightsName": "dsdemo-test-eu2-oaappi-01",
+    "OpenAIDemoAppInsightsName": "emdemo-test-eu2-oaappi-01",
 
-    "OpenAIDemoKeyVaultName": "dsdemo-test-eu2-oakv-01",
+    "OpenAIDemoKeyVaultName": "emdemo-test-eu2-oakv-01",
 
-    "OpenAIDemoDocumentIntelligenceName": "dsdemo-test-eu2-di-01",
+    "OpenAIDemoDocumentIntelligenceName": "emdemo-test-eu2-di-01",
     
-    "OpenAIDemoAppServicePlanName": "dsdemo-test-eu2-oaasp-01"
+    "OpenAIDemoAppServicePlanName": "emdemo-test-eu2-oaasp-01"
 }
