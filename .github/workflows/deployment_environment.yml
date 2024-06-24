@@ -323,6 +323,7 @@ jobs:
               }
             }
             if ("${{ env.DeployPurview }}" -eq "True") {
+              Remove-Module -Name Az.Accounts
               Install-Module -Name Az.Purview -Force
               Install-Module -Name Az.Accounts -RequiredVersion 2.19.0 -Force
               Import-Module -Name Az.Accounts -RequiredVersion 2.19.0 -Force
