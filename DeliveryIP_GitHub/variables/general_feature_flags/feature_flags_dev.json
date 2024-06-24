@@ -9,7 +9,7 @@
 
     "ServicePrincipalHasOwnerRBACAtSubscription": true,
 
-    "DeployFabricCapacity": true,
+    "DeployFabricCapacity": false,
 
     "DeployDataLake": true,
 
@@ -53,9 +53,9 @@
 
     "DeployLogAnalytics": true,
     
-    "DeployMLWorkspace": true,
+    "DeployMLWorkspace": false,
 
-    "DeployMLCompute": true,
+    "DeployMLCompute": false,
     
     "DeployCognitiveService": true,
     
