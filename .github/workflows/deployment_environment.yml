@@ -323,7 +323,6 @@ jobs:
               }
             }
             if ("${{ env.DeployPurview }}" -eq "True") {
-              az upgrade --yes
               Install-Module -Name Az.Purview -Force
               Import-Module Az.Purview
               $availability = Test-AzPurviewAccountNameAvailability -Name '${{ env.purviewName }}' -Type "Microsoft.Purview/accounts"
