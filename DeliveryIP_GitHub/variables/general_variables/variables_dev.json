@@ -1,76 +1,76 @@
 {
-    "azureResourceLocation": "eastus2",
+    "azureResourceLocation": "uksouth",
 
-    "PrimaryRgName": "rg-dscdemo-dev-eu2-main",
+    "PrimaryRgName": "rg-emdemo-dev-uk-main",
 
     "tags": {
         "env": "dev"
     },
 
-    "fabricCapacityName": "dscdemodeveu2fabric01",
+    "fabricCapacityName": "emdemodevukfabric01",
 
     "fabricSKU": "F2",
 
-    "synapseWorkspaceName": "dscdemo-dev-eu2-syn-01",
+    "synapseWorkspaceName": "emdemo-dev-uk-syn-01",
 
-    "dataFactoryName": "dscdemo-dev-eu2-adf-01",
+    "dataFactoryName": "emdemo-dev-uk-adf-01",
 
-    "azureSQLServerName": "dscdemo-dev-eu2-sql-01",
+    "azureSQLServerName": "emdemo-dev-uk-sql-01",
     "azureSQLServerDBName": "MetadataControl",
 
-    "keyVaultName": "dscdemo-dev-eu2-kv-01",
+    "keyVaultName": "emdemo-dev-uk-kv-01",
 
-    "dataLakeName": "dscdemodeveu2datalake01",
+    "dataLakeName": "emdemodevukdatalake01",
 
-    "landingStorageName": "dscdemodeveu2landstg01",
+    "landingStorageName": "emdemodevuklandstg01",
 
-    "LogicAppRgName": "rg-dscdemo-dev-eu2-logic",
+    "LogicAppRgName": "rg-emdemo-dev-uk-logic",
 
-    "logicAppName": "dscdemo-dev-eu2-logic-01",
+    "logicAppName": "emdemo-dev-uk-logic-01",
 
-    "logicAppServicePlanName": "dscdemo-dev-eu2-logic-asp-01",
+    "logicAppServicePlanName": "emdemo-dev-uk-logic-asp-01",
 
-    "logicAppStorageName": "dscdemodeveu2logicst01",
+    "logicAppStorageName": "emdemodevuklogicst01",
 
-    "logicAppInsightsName": "dscdemo-dev-eu2-logic-appi-01",
+    "logicAppInsightsName": "emdemo-dev-uk-logic-appi-01",
 
-    "purviewName": "dscdemo-dev-eu2-pview-01",
+    "purviewName": "emdemo-dev-uk-pview-01",
 
-    "logAnalyticsName": "dscdemo-dev-eu2-log-01",
+    "logAnalyticsName": "emdemo-dev-uk-log-01",
 
-    "MlRgName": "rg-dscdemo-dev-eu2-ml",
+    "MlRgName": "rg-emdemo-dev-uk-ml",
 
-    "mlWorkspaceName": "dscdemo-dev-eu2-mlw-01",
+    "mlWorkspaceName": "emdemo-dev-uk-mlw-01",
 
-    "mlWorkspaceKeyVaultName": "dscdemo-dev-eu2-mlwkv-01",
+    "mlWorkspaceKeyVaultName": "emdemo-dev-uk-mlwkv-01",
 
-    "mlStorageName": "dscdemodeveu2mlwst01",
+    "mlStorageName": "emdemodevukmlwst01",
 
-    "mlAppInsightsName": "dscdemo-dev-eu2-mlw-appi-01",
+    "mlAppInsightsName": "emdemo-dev-uk-mlw-appi-01",
 
-    "mlContainerRegistryName": "dscdemodeveu2mlwcr01",
+    "mlContainerRegistryName": "emdemodevukmlwcr01",
 
-    "databricksWorkspaceName": "dscdemo-dev-eu2-dbw-02",
+    "databricksWorkspaceName": "emdemo-dev-uk-dbw-02",
 
-    "cognitiveServiceName": "dscdemo-dev-eu2-cog-01",
+    "cognitiveServiceName": "emdemo-dev-uk-cog-01",
 
-    "eventHubNamespaceName": "dscdemo-dev-eu2-evhns-01",
+    "eventHubNamespaceName": "emdemo-dev-uk-evhns-01",
 
-    "streamAnalyticsName": "dscdemo-dev-eu2-asa-01",
+    "streamAnalyticsName": "emdemo-dev-uk-asa-01",
 
-    "OpenAIRgName": "rg-dscdemo-dev-eu2-openai",
+    "OpenAIRgName": "rg-emdemo-dev-uk-openai",
 
-    "OpenAIServiceName": "dscdemo-dev-eu2-oai-01",
+    "OpenAIServiceName": "emdemo-dev-uk-oai-01",
 
-    "OpenAICognitiveSearchName": "dscdemo-dev-eu2-cs-01",
+    "OpenAICognitiveSearchName": "emdemo-dev-uk-cs-01",
 
-    "OpenAIDemoAppName": "dscdemo-dev-eu2-oaapp-01",
+    "OpenAIDemoAppName": "emdemo-dev-uk-oaapp-01",
 
-    "OpenAIDemoAppInsightsName": "dscdemo-dev-eu2-oaappi-01",
+    "OpenAIDemoAppInsightsName": "emdemo-dev-uk-oaappi-01",
 
-    "OpenAIDemoKeyVaultName": "dscdemo-dev-eu2-oakv-01",
+    "OpenAIDemoKeyVaultName": "emdemo-dev-uk-oakv-01",
 
-    "OpenAIDemoDocumentIntelligenceName": "dscdemo-dev-eu2-oadi-01",
+    "OpenAIDemoDocumentIntelligenceName": "emdemo-dev-uk-oadi-01",
 
-    "OpenAIDemoAppServicePlanName": "dscdemo-dev-eu2-oaasp-01"
+    "OpenAIDemoAppServicePlanName": "emdemo-dev-uk-oaasp-01"
 }
