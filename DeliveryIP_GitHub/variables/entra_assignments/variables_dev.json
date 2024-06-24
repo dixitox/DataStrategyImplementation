@@ -1,13 +1,13 @@
 {
 
     "Entra_Group_Admin": {
-        "Group_ID": "7beb3f9f-dc36-4c95-b466-c7ac0796056b",
-        "Group_Name": "Data Strategy Admins"
+        "Group_ID": "67fd5bb8-6eb2-4a1b-b5d8-fc5e72285260",
+        "Group_Name": "Data-Strategy-AAD-Group"
     },
 
     "Entra_Group_Shared_Service": {
-        "Group_ID": "847ab928-f609-4f43-8ead-cbf18311e465",
-        "Group_Name": "Data Strategy Shared Services"
+        "Group_ID": "67fd5bb8-6eb2-4a1b-b5d8-fc5e72285260",
+        "Group_Name": "Data-Strategy-AAD-Group"
     },
 
     "Assign_RBAC_for_Governance": false,
