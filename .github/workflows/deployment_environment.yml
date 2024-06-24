@@ -46,7 +46,7 @@ jobs:
       DeployMLCompute: ${{ env.DeployMLCompute }}
 
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: 
       name: ${{ inputs.environment }}
@@ -1124,7 +1124,7 @@ jobs:
     needs: [deploy-machine-learning-resources, deploy-logic-app-resources]
 
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     environment: 
       name: ${{ inputs.environment }}
