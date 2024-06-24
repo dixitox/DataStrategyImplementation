@@ -324,6 +324,7 @@ jobs:
             }
             if ("${{ env.DeployPurview }}" -eq "True") {
               Install-Module -Name Az.Purview -Force
+              Import-Module -Name Az.Accounts -RequiredVersion 2.19.0
               Import-Module Az.Purview -Force
               $availability = Test-AzPurviewAccountNameAvailability -Name '${{ env.purviewName }}' -Type "Microsoft.Purview/accounts"
               $resourceExists = Get-AzResource -ResourceGroupName "${{ env.PrimaryRgName }}" -Name "${{ env.purviewName }}"
