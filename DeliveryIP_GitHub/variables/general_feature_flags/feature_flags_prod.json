@@ -19,11 +19,11 @@
 
     "DeployAzureSQL": true,
 
-    "DeployAzureSQLArtifacts": false,
+    "DeployAzureSQLArtifacts": true,
     
     "DeployADF": true,
 
-    "DeployADFArtifacts": false,
+    "DeployADFArtifacts": true,
 
     "UseDatabricksForIngestionNotebooks": true,
 
@@ -37,19 +37,19 @@
 
     "DeploySynapseWithDataExfiltrationProtection": false,
 
-    "DeployDatabricks": false,
+    "DeployDatabricks": true,
 
     "DeployDatabricksArtifacts": true,
 
-    "DeployDatabricksCompute": false,
+    "DeployDatabricksCompute": true,
 
-    "DatabricksUsesUnityCatalog": false,
+    "DatabricksUsesUnityCatalog": true,
     
     "DeployPurview": true,
 
     "DeployLogicApp": true,
 
-    "DeployLogicAppArtifacts": false,
+    "DeployLogicAppArtifacts": true,
 
     "DeployLogAnalytics": true,
     
@@ -62,7 +62,7 @@
     "DeployEventHubNamespace": false,
 
     "DeployStreamAnalytics": false,
-
+    
     "DeployOpenAIServiceAndAiSearch": false,
 
     "DeployOpenAIDemoApp": false
