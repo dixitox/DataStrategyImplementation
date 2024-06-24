@@ -323,7 +323,9 @@ jobs:
               }
             }
             if ("${{ env.DeployPurview }}" -eq "True") {
-              ##Install-Module -Name Az.Purview -Force
+              az upgrade --yes
+              Install-Module -Name Az.Purview -Force
+              Import-Module Az.Purview
               $availability = Test-AzPurviewAccountNameAvailability -Name '${{ env.purviewName }}' -Type "Microsoft.Purview/accounts"
               $resourceExists = Get-AzResource -ResourceGroupName "${{ env.PrimaryRgName }}" -Name "${{ env.purviewName }}"
               if ($availability.NameAvailable -eq $false -and [string]::IsNullOrEmpty($resourceExists)) {
