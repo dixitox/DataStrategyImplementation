@@ -48,7 +48,7 @@ jobs:
 
       # Log into Azure
       - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
@@ -57,7 +57,7 @@ jobs:
 
       - name: Get Main Variables
         run: |
-          $json_data = Get-Content "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/variables/${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/variables/${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -67,7 +67,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -77,7 +77,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/networking_setup/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/networking_setup/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -87,7 +87,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/entra_assignments/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/entra_assignments/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -203,9 +203,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/azuresql.bicep
+          template: ./DeploymentComponents/bicep_templates/azuresql.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/azuresql.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/azuresql.json
             location=${{ env.azureResourceLocation }}
             azureSQLServerName=${{ env.NewAzureSQLServerName }} 
             azureSQLServerDBName=${{ env.azureSQLServerDBName }} 
@@ -237,10 +237,10 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            (Get-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql) -Replace 'insert_synapse_name', '${{ env.NewSynapseWorkspaceName }}' | Set-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql
-            (Get-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql) -Replace 'insert_service_principal_name', '${{ env.servicePrincipalName }}' | Set-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql
-            (Get-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql) -Replace 'insert_consumer_group_name', '${{ env.Entra_Group_for_Consumer_Name }}' | Set-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql
-            Get-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/*/*.sql | Set-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/combined.sql
+            (Get-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql) -Replace 'insert_synapse_name', '${{ env.NewSynapseWorkspaceName }}' | Set-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql
+            (Get-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql) -Replace 'insert_service_principal_name', '${{ env.servicePrincipalName }}' | Set-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql
+            (Get-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql) -Replace 'insert_consumer_group_name', '${{ env.Entra_Group_for_Consumer_Name }}' | Set-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/stored_procedures/AddManagedIdentitiesAsUsers.sql
+            Get-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/*/*.sql | Set-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/combined.sql
           azPSVersion: "latest"  
 
       - name: Deploy Combined SQL DDL File to Consumer Azure SQL DB
@@ -248,7 +248,7 @@ jobs:
         uses: azure/sql-action@v2.2.1
         with:        
           connection-string: 'Server=${{ env.NewAzureSQLServerName }}.database.windows.net; Initial Catalog=${{ env.azureSQLServerDBName }}; Authentication=Active Directory Default' 
-          path: './DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/combined.sql'
+          path: './DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/consumer/combined.sql'
 
       # Combine SQL Files into One for Deployment
       - name: Update SQL DDL File for Deployment to Main SQL
@@ -258,12 +258,12 @@ jobs:
           inlineScript: |
             # edit this later. tech debt
             try {
-              (Get-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/stored_procedures/Execute_For_Consumer.sql) -Replace 'insert_synapse_name', '${{ env.NewSynapseWorkspaceName }}' | Set-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/stored_procedures/Execute_For_Consumer.sql
+              (Get-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/stored_procedures/Execute_For_Consumer.sql) -Replace 'insert_synapse_name', '${{ env.NewSynapseWorkspaceName }}' | Set-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/stored_procedures/Execute_For_Consumer.sql
             }
             catch {
               Write-Host $_
             }
-            Get-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/*/*.sql | Set-Content ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/combined.sql
+            Get-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/*/*.sql | Set-Content ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/combined.sql
           azPSVersion: "latest"  
 
       - name: Deploy Combined SQL DDL File to Azure SQL DB
@@ -271,7 +271,7 @@ jobs:
         uses: azure/sql-action@v2.2.1
         with:        
           connection-string: 'Server=${{ env.azureSQLServerName }}.database.windows.net; Initial Catalog=${{ env.azureSQLServerDBName }}; Authentication=Active Directory Default' 
-          path: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/combined.sql
+          path: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/azure_sql_artifacts/main/combined.sql
 
       # Set Azure SQL AAD Admin Back to Group with Team Members
       - name: Set Azure SQL AAD Admin to Group with Project Team Members
@@ -292,9 +292,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/synapse.bicep
+          template: ./DeploymentComponents/bicep_templates/synapse.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/synapse.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/synapse.json
             location=${{ env.azureResourceLocation }}
             synapseWorkspaceName=${{ env.NewSynapseWorkspaceName }}
             tags="${{ env.tags }}"
@@ -324,15 +324,6 @@ jobs:
             PrimaryRg=${{ env.PrimaryRgName }}
           failOnStdErr: false
 
-      # Log into Azure
-      - name: Refresh OIDC Credentials
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
-          tenant-id: ${{ secrets.TENANT_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
-          enable-AzPSSession: true
-
       # Deploy Synapse Pools. Currently Only Spark Pools Are Deployed
       - name: Deploy Synapse Spark Pools
         if: ${{ env.DeployNewSynapse == 'True' }}
@@ -343,9 +334,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/synapse_pools.bicep
+          template: ./DeploymentComponents/bicep_templates/synapse_pools.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/synapse_pools.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/synapse_pools.json
             synapseWorkspaceName=${{ env.NewSynapseWorkspaceName }}
           failOnStdErr: false
 
@@ -358,9 +349,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/storageaccount.bicep
+          template: ./DeploymentComponents/bicep_templates/storageaccount.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/mlstorage.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/mlstorage.json
             location=${{ env.azureResourceLocation }}
             storageAccountName=${{ env.NewMlStorageName }} 
             DeployWithCustomNetworking=${{ env.DeployWithCustomNetworking }} 
@@ -390,9 +381,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/keyvault.bicep
+          template: ./DeploymentComponents/bicep_templates/keyvault.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/keyVault.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/keyVault.json
             location=${{ env.azureResourceLocation }}
             keyVaultName=${{ env.NewMlKeyVaultName }} 
             DeployLogAnalytics=${{ env.ConnectToExistingLogAnalytics }}
@@ -422,9 +413,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/appinsights.bicep
+          template: ./DeploymentComponents/bicep_templates/appinsights.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/mlappinsights.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/mlappinsights.json
             location=${{ env.azureResourceLocation }}
             appInsightsName=${{ env.NewMlAppInsightsName }} 
             DeployLogAnalytics=${{ env.ConnectToExistingLogAnalytics }}
@@ -442,9 +433,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/container_registry.bicep
+          template: ./DeploymentComponents/bicep_templates/container_registry.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/aml_container_registry.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/aml_container_registry.json
             location=${{ env.azureResourceLocation }}
             containerRegistryName=${{ env.NewMlContainerRegistryName }} 
             DeployWithCustomNetworking=${{ env.DeployWithCustomNetworking }} 
@@ -471,9 +462,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/mlworkspace.bicep
+          template: ./DeploymentComponents/bicep_templates/mlworkspace.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/mlworkspace.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/mlworkspace.json
             location=${{ env.azureResourceLocation }}
             mlWorkspaceName=${{ env.NewMlWorkspaceName }} 
             mlStorageAccountName=${{ env.NewMlStorageName }} 
@@ -505,9 +496,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/ml_compute.bicep
+          template: ./DeploymentComponents/bicep_templates/ml_compute.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/ml_compute.json
+          parameters: ./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/bicep_parameters/${{ inputs.envFolderPath }}/ml_compute.json
             location=${{ env.azureResourceLocation }}
             mlWorkspaceName=${{ env.NewMlWorkspaceName }} 
             dataLakeName=${{ env.dataLakeName }} 
@@ -520,15 +511,6 @@ jobs:
             MLComputeSubnetName=${{ env.MLComputeSubnetName }} 
             Assign_RBAC_On_Deployment=${{ env.Consumer_Assign_RBAC_On_Deployment }} 
           failOnStdErr: false
-
-      # Log into Azure
-      - name: Refresh OIDC Credentials
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
-          tenant-id: ${{ secrets.TENANT_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
-          enable-AzPSSession: true
 
       - name: Enable Azure Container Registry for ML Workspace Behind Virtual Network
         if: ${{ env.DeployNewConsumerMlWorkspace == 'True' && env.CreatePrivateEndpoints == 'True' && env.DeployWithCustomNetworking == 'True' }}
@@ -548,7 +530,7 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.NewResourceGroupName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/rbac_dsdeployment_consumer.bicep
+          template: ./DeploymentComponents/bicep_templates/rbac_dsdeployment_consumer.bicep
           # Supply deployment parameter values.
           parameters:
             Assign_RBAC_for_CICD_Service_Principal=${{ env.Assign_RBAC_for_CICD_Service_Principal }}
@@ -568,10 +550,10 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_dfs.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json) -Replace 'storageAccountName', '${{ env.dataLakeName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json
-            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_DataLake_DFS -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json"
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_dfs.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json) -Replace 'storageAccountName', '${{ env.dataLakeName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json
+            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_DataLake_DFS -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_dfs_1.json"
           azPSVersion: "latest"
 
       - name: Create Synapse Managed Private Endpoint to Data Lake Storage Account - Blob endpoint
@@ -579,10 +561,10 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_blob.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json) -Replace 'storageAccountName', '${{ env.dataLakeName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json
-            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_DataLake_Blob -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json"
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_blob.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json) -Replace 'storageAccountName', '${{ env.dataLakeName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json
+            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_DataLake_Blob -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/adls_blob_1.json"
           azPSVersion: "latest"
 
       - name: Create Synapse Managed Private Endpoint to Main Synapse Azure SQL
@@ -590,10 +572,10 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json) -Replace 'azureSQLServerName', '${{ env.azureSQLServerName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json
-            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_SourceAzureSQL -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json"
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json) -Replace 'azureSQLServerName', '${{ env.azureSQLServerName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json
+            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_SourceAzureSQL -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql1.json"
           azPSVersion: "latest"
 
       - name: Create Synapse Managed Private Endpoint to New Azure SQL
@@ -601,10 +583,10 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql.json) -Replace 'resourceGroupName', '${{ env.NewResourceGroupName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json) -Replace 'azureSQLServerName', '${{ env.NewAzureSQLServerName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json
-            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_OrchestrationAzureSQL -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json"
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql.json) -Replace 'resourceGroupName', '${{ env.NewResourceGroupName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json) -Replace 'azureSQLServerName', '${{ env.NewAzureSQLServerName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json
+            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_OrchestrationAzureSQL -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/azuresql2.json"
           azPSVersion: "latest"
 
       - name: Create Synapse Managed Private Endpoint to Purview
@@ -612,10 +594,10 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/purview.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/purview.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/purview.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/purview.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/purview.json) -Replace 'purviewName', '${{ env.purviewName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/purview.json
-            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_Purview -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/purview.json"
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/purview.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/purview.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/purview.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/purview.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/purview.json) -Replace 'purviewName', '${{ env.purviewName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/purview.json
+            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_Purview -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/purview.json"
           azPSVersion: "latest"
 
       - name: Create Synapse Managed Private Endpoint to ML Workspace
@@ -623,20 +605,11 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json) -Replace 'resourceGroupName', '${{ env.NewResourceGroupName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json) -Replace 'MachineLearningWorkspaceName', '${{ env.NewMlWorkspaceName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json
-            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_MachineLearningWorkspace -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json"
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json) -Replace 'resourceGroupName', '${{ env.NewResourceGroupName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json) -Replace 'MachineLearningWorkspaceName', '${{ env.NewMlWorkspaceName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json
+            New-AzSynapseManagedPrivateEndpoint -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name MPE_MachineLearningWorkspace -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/managed_private_endpoints/machineLearningWorkspace.json"
           azPSVersion: "latest"
-
-      # Log into Azure
-      - name: Refresh OIDC Credentials
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
-          tenant-id: ${{ secrets.TENANT_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
-          enable-AzPSSession: true
 
       # Create Synapse Linked Services to Data Lake, Landing Storage, Azure SQL, and Key Vault
       - name: Create Synapse Linked Services
@@ -645,26 +618,26 @@ jobs:
         with:
           inlineScript: |
             # data lake
-            (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/adls.json) -Replace 'storageAccountName', '${{ env.dataLakeName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/adls_1.json
-            Set-AzSynapseLinkedService -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name 'LS_DataLake' -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/adls_1.json"
+            (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/adls.json) -Replace 'storageAccountName', '${{ env.dataLakeName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/adls_1.json
+            Set-AzSynapseLinkedService -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name 'LS_DataLake' -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/linked_services/adls_1.json"
 
             if ("${{ env.DeployNewAzureSQL }}" -eq "True") {
               # azure sql source
-              (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql.json) -Replace 'azureSQLServerName', '${{ env.azureSQLServerName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql1.json
-              (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql1.json) -Replace 'azureSQLServerDBName', '${{ env.azureSQLServerDBName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql1.json
-              Set-AzSynapseLinkedService -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name 'LS_SQL_Source' -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql1.json"
+              (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql.json) -Replace 'azureSQLServerName', '${{ env.azureSQLServerName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql1.json
+              (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql1.json) -Replace 'azureSQLServerDBName', '${{ env.azureSQLServerDBName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql1.json
+              Set-AzSynapseLinkedService -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name 'LS_SQL_Source' -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql1.json"
   
               # azure sql orchestration
-              (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql.json) -Replace 'azureSQLServerName', '${{ env.NewAzureSQLServerName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql2.json
-              (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql2.json) -Replace 'azureSQLServerDBName', '${{ env.azureSQLServerDBName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql2.json
-              Set-AzSynapseLinkedService -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name 'LS_SQL_Orchestration' -DefinitionFile "./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/azuresql2.json"
+              (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql.json) -Replace 'azureSQLServerName', '${{ env.NewAzureSQLServerName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql2.json
+              (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql2.json) -Replace 'azureSQLServerDBName', '${{ env.azureSQLServerDBName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql2.json
+              Set-AzSynapseLinkedService -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name 'LS_SQL_Orchestration' -DefinitionFile "./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql2.json"
             }
 
             # create ml workspace linked service
             if ("${{ env.DeployNewConsumerMlWorkspace }}" -eq "True") { 
-              (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json) -Replace 'resourceGroupNameInput', '${{ env.NewResourceGroupName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json
-              (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json
-              (Get-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json) -Replace 'MachineLearningWorkspaceName', '${{ env.NewMlWorkspaceName }}' | Set-Content ./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json
+              (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json) -Replace 'resourceGroupNameInput', '${{ env.NewResourceGroupName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json
+              (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json) -Replace 'subID', '${{ secrets.SUBSCRIPTION_ID }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json
+              (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json) -Replace 'MachineLearningWorkspaceName', '${{ env.NewMlWorkspaceName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json
               
               $tokenOutput = Get-AzAccessToken -Resource "https://dev.azuresynapse.net"
               $token = $tokenOutput.token
@@ -673,7 +646,7 @@ jobs:
                 Authorization = "$auth"
               }
 
-              $ls_body = Get-Content "./DeliveryIP_GitHub/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json" | Out-String
+              $ls_body = Get-Content "./DeploymentComponents/synapse_adf_artifacts/linked_services/machineLearningWorkspace.json" | Out-String
 
               $api_url = "https://${{ env.NewSynapseWorkspaceName }}.dev.azuresynapse.net/linkedServices/LS_MachineLearningWorkspace?api-version=2019-06-01-preview"
               
@@ -693,7 +666,7 @@ jobs:
               Authorization = "$auth"
             }
 
-            $databaseFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/databases/"
+            $databaseFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/databases/"
             
             try {
               $files = Get-ChildItem -Path "$databaseFolder" -Depth 1 -Include *.json | Select-Object Name, FullName
@@ -719,7 +692,7 @@ jobs:
               }
             }
 
-            $databaseTablesFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/databases/*/tables/"
+            $databaseTablesFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/databases/*/tables/"
             
             try {
               $files = Get-ChildItem -Path "$databaseTablesFolder" -Depth 1 -Include *.json | Select-Object Name, FullName
@@ -748,7 +721,7 @@ jobs:
               }
             }
 
-            $databaseRelationshipsFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/databases/*/relationships/"
+            $databaseRelationshipsFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/databases/*/relationships/"
             
             try {
               $files = Get-ChildItem -Path "$databaseRelationshipsFolder" -Depth 1 -Include *.json | Select-Object Name, FullName
@@ -788,7 +761,7 @@ jobs:
               Authorization = "$auth"
             }
 
-            $datasetFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/integration_datasets/"
+            $datasetFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/integration_datasets/"
             
             try {
               $files = Get-ChildItem -Path "$datasetFolder" -Exclude "NotDeployed"
@@ -807,7 +780,7 @@ jobs:
               Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $dataset_body
             }
 
-            $dataflowFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/dataflows/"
+            $dataflowFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/dataflows/"
             
             try {
               $files = Get-ChildItem -Path "$dataflowFolder"
@@ -824,7 +797,7 @@ jobs:
               Set-AzSynapseDataFlow -WorkspaceName ${{ env.synapseWorkspaceName }} -Name $name_without_extension -DefinitionFile "$full_path"
             }
 
-            $notebookFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/notebooks/"
+            $notebookFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/notebooks/"
             
             try {
               $files = Get-ChildItem $notebookFolder -recurse | where { $_.extension -eq ".ipynb" };
@@ -845,7 +818,7 @@ jobs:
               }
             }
 
-            $pipelineFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/pipelines/"
+            $pipelineFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/main/pipelines/"
             
             try {
               $files = Get-ChildItem -Path "$pipelineFolder" | Sort-Object -Property Name -Descending
@@ -877,7 +850,7 @@ jobs:
               Authorization = "$auth"
             }
 
-            $databaseFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/databases/"
+            $databaseFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/databases/"
             
             try {
               $files = Get-ChildItem -Path "$databaseFolder" -Depth 1 -Include *.json | Select-Object Name, FullName
@@ -903,7 +876,7 @@ jobs:
               }
             }
 
-            $databaseTablesFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/databases/*/tables/"
+            $databaseTablesFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/databases/*/tables/"
             
             try {
               $files = Get-ChildItem -Path "$databaseTablesFolder" -Depth 1 -Include *.json | Select-Object Name, FullName
@@ -932,7 +905,7 @@ jobs:
               }
             }
 
-            $databaseRelationshipsFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/databases/*/relationships/"
+            $databaseRelationshipsFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/databases/*/relationships/"
             
             try {
               $files = Get-ChildItem -Path "$databaseRelationshipsFolder" -Depth 1 -Include *.json | Select-Object Name, FullName
@@ -972,7 +945,7 @@ jobs:
               Authorization = "$auth"
             }
 
-            $datasetFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/integration_datasets/"
+            $datasetFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/integration_datasets/"
             
             try {
               $files = Get-ChildItem -Path "$datasetFolder" -Exclude "NotDeployed"
@@ -991,7 +964,7 @@ jobs:
               Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $dataset_body
             }
 
-            $sqlScriptFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/sqlscripts/"
+            $sqlScriptFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/sqlscripts/"
             
             try {
               $files = Get-ChildItem -Path "$sqlScriptFolder"
@@ -1009,7 +982,7 @@ jobs:
               Set-AzSynapseSqlScript -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -DefinitionFile "$full_path" -FolderPath "PBI_View_Creation_SQL" -SqlDatabaseName TAXModel -SqlPoolName "Built-in"
             }
 
-            $dataflowFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/dataflows/"
+            $dataflowFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/dataflows/"
             
             try {
               $files = Get-ChildItem -Path "$dataflowFolder"
@@ -1026,7 +999,7 @@ jobs:
               Set-AzSynapseDataFlow -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name $name_without_extension -DefinitionFile "$full_path"
             }
 
-            $notebookFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/notebooks/"
+            $notebookFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/notebooks/"
             
             try {
               $files = Get-ChildItem $notebookFolder -recurse | where { $_.extension -eq ".ipynb" };
@@ -1047,7 +1020,7 @@ jobs:
               }
             }
 
-            $pipelineFolder = "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/pipelines/"
+            $pipelineFolder = "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/pipelines/"
             
             try {
               $files = Get-ChildItem -Path "$pipelineFolder" | Sort-Object -Property Name -Descending
@@ -1066,7 +1039,7 @@ jobs:
               Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $pipeline_body
             }
             
-            Set-AzSynapseTrigger -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name 'TR_GetLoggingUpdates' -DefinitionFile "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/triggers/TR_GetLoggingUpdates.json"
+            Set-AzSynapseTrigger -WorkspaceName ${{ env.NewSynapseWorkspaceName }} -Name 'TR_GetLoggingUpdates' -DefinitionFile "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/synapse_artifacts/consumer/triggers/TR_GetLoggingUpdates.json"
           azPSVersion: "latest"
 
       # Get AAD Group ID that will be used as admin for Synapse

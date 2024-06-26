@@ -51,7 +51,7 @@ jobs:
 
       # Log into Azure
       - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
@@ -60,13 +60,13 @@ jobs:
 
       - name: Get Variables
         run: |
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_dev.json" | ConvertFrom-Json
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_dev.json" | ConvertFrom-Json
 
           # dev data factory name
           $dataFactoryNameDev = $json_data.dataFactoryName
           "dataFactoryNameDev=$dataFactoryNameDev" >> $env:GITHUB_ENV
 
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_test.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_test.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -105,7 +105,7 @@ jobs:
 
       # Log into Azure
       - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
@@ -114,13 +114,13 @@ jobs:
 
       - name: Get Variables
         run: |
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_dev.json" | ConvertFrom-Json
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_dev.json" | ConvertFrom-Json
 
           # dev data factory name
           $dataFactoryNameDev = $json_data.dataFactoryName
           "dataFactoryNameDev=$dataFactoryNameDev" >> $env:GITHUB_ENV
 
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_prod.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_prod.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){

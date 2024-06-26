@@ -39,15 +39,15 @@ jobs:
 
       - name: Determine Environments to Deploy
         run: |
-          $ff_dev = Get-Content "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/variables/dev.json" | ConvertFrom-Json -AsHashtable
+          $ff_dev = Get-Content "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/variables/dev.json" | ConvertFrom-Json -AsHashtable
           $DeployDevEnvironment = $ff_dev.DeployDevEnvironment
           "DeployDevEnvironment=$DeployDevEnvironment" >> $env:GITHUB_ENV
 
-          $ff_test = Get-Content "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/variables/test.json" | ConvertFrom-Json -AsHashtable
+          $ff_test = Get-Content "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/variables/test.json" | ConvertFrom-Json -AsHashtable
           $DeployTestEnvironment = $ff_test.DeployTestEnvironment
           "DeployTestEnvironment=$DeployTestEnvironment" >> $env:GITHUB_ENV
 
-          $ff_prod = Get-Content "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/variables/prod.json" | ConvertFrom-Json -AsHashtable
+          $ff_prod = Get-Content "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/variables/prod.json" | ConvertFrom-Json -AsHashtable
           $DeployProdEnvironment = $ff_prod.DeployProdEnvironment
           "DeployProdEnvironment=$DeployProdEnvironment" >> $env:GITHUB_ENV
         shell: pwsh

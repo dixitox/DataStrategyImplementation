@@ -51,7 +51,7 @@ jobs:
       # Log into Azure
       - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
         if: ${{ inputs.DeployMLWorkspace == 'True' || inputs.DeployMLCompute == 'True' }}
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
@@ -61,7 +61,7 @@ jobs:
       - name: Get Main Variables
         if: ${{ inputs.DeployMLWorkspace == 'True' || inputs.DeployMLCompute == 'True' }}
         run: |
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_feature_flags/feature_flags_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_feature_flags/feature_flags_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -71,7 +71,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -81,7 +81,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/networking_setup/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/networking_setup/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -91,7 +91,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/entra_assignments/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/entra_assignments/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -195,9 +195,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.MlRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/storageaccount.bicep
+          template: ./DeploymentComponents/bicep_templates/storageaccount.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/mlstorage.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/mlstorage.json
             location=${{ env.azureResourceLocation }}
             storageAccountName=${{ env.mlStorageName }}
             DeployWithCustomNetworking=${{ env.DeployWithCustomNetworking }}
@@ -227,9 +227,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.MlRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/appinsights.bicep
+          template: ./DeploymentComponents/bicep_templates/appinsights.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/mlappinsights.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/mlappinsights.json
             location=${{ env.azureResourceLocation }}
             appInsightsName=${{ env.mlAppInsightsName }} 
             DeployLogAnalytics=${{ env.DeployLogAnalytics }}
@@ -247,9 +247,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.MlRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/container_registry.bicep
+          template: ./DeploymentComponents/bicep_templates/container_registry.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/aml_container_registry.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/aml_container_registry.json
             location=${{ env.azureResourceLocation }}
             containerRegistryName=${{ env.mlContainerRegistryName }} 
             DeployWithCustomNetworking=${{ env.DeployWithCustomNetworking }} 
@@ -276,9 +276,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.MlRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/keyvault.bicep
+          template: ./DeploymentComponents/bicep_templates/keyvault.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/mlWorkspaceKeyVault.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/mlWorkspaceKeyVault.json
             location=${{ env.azureResourceLocation }}
             keyVaultName=${{ env.mlWorkspaceKeyVaultName }} 
             DeployLogAnalytics=${{ env.DeployLogAnalytics }}
@@ -308,9 +308,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.MlRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/mlworkspace.bicep
+          template: ./DeploymentComponents/bicep_templates/mlworkspace.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/mlworkspace.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/mlworkspace.json
             location=${{ env.azureResourceLocation }}
             mlWorkspaceName=${{ env.mlWorkspaceName }} 
             mlStorageAccountName=${{ env.mlStorageName }} 
@@ -345,9 +345,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.MlRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/ml_compute.bicep
+          template: ./DeploymentComponents/bicep_templates/ml_compute.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/ml_compute.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/ml_compute.json
             location=${{ env.azureResourceLocation }}
             mlWorkspaceName=${{ env.mlWorkspaceName }} 
             dataLakeName=${{ env.dataLakeName }} 
@@ -360,16 +360,6 @@ jobs:
             CreatePrivateEndpoints=${{ env.CreatePrivateEndpoints }} 
             Assign_RBAC_On_Deployment=${{ env.Assign_RBAC_On_Deployment }} 
           failOnStdErr: false
-
-      # Refresh OIDC Credentials
-      - name: Refresh OIDC Credentials
-        if: ${{ inputs.DeployMLWorkspace == 'True' || inputs.DeployMLCompute == 'True' }}
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
-          tenant-id: ${{ secrets.TENANT_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
-          enable-AzPSSession: true
 
       - name: Enable Azure Container Registry for ML Workspace Behind Virtual Network
         if: ${{ inputs.DeployMLWorkspace == 'True' && env.CreatePrivateEndpoints == 'True' && env.DeployWithCustomNetworking == 'True' }}

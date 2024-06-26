@@ -1,0 +1,76 @@
+{
+    "azureResourceLocation": "uksouth",
+
+    "PrimaryRgName": "rg-em01-dev-uk-main",
+
+    "tags": {
+        "env": "dev"
+    },
+
+    "fabricCapacityName": "em01devukfabric01",
+
+    "fabricSKU": "F2",
+
+    "synapseWorkspaceName": "em01-dev-uk-syn-01",
+
+    "dataFactoryName": "em01-dev-uk-adf-01",
+
+    "azureSQLServerName": "em01-dev-uk-sql-01",
+    "azureSQLServerDBName": "MetadataControl",
+
+    "keyVaultName": "em01-dev-uk-kv-01",
+
+    "dataLakeName": "em01devukdatalake01",
+
+    "landingStorageName": "em01devuklandstg01",
+
+    "LogicAppRgName": "rg-em01-dev-uk-logic",
+
+    "logicAppName": "em01-dev-uk-logic-01",
+
+    "logicAppServicePlanName": "em01-dev-uk-logic-asp-01",
+
+    "logicAppStorageName": "em01devuklogicst01",
+
+    "logicAppInsightsName": "em01-dev-uk-logic-appi-01",
+
+    "purviewName": "em01-dev-uk-pview-01",
+
+    "logAnalyticsName": "em01-dev-uk-log-01",
+
+    "MlRgName": "rg-em01-dev-uk-ml",
+
+    "mlWorkspaceName": "em01-dev-uk-mlw-01",
+
+    "mlWorkspaceKeyVaultName": "em01-dev-uk-mlwkv-01",
+
+    "mlStorageName": "em01devukmlwst01",
+
+    "mlAppInsightsName": "em01-dev-uk-mlw-appi-01",
+
+    "mlContainerRegistryName": "em01devukmlwcr01",
+
+    "databricksWorkspaceName": "em01-dev-uk-dbw-02",
+
+    "cognitiveServiceName": "em01-dev-uk-cog-01",
+
+    "eventHubNamespaceName": "em01-dev-uk-evhns-01",
+
+    "streamAnalyticsName": "em01-dev-uk-asa-01",
+
+    "OpenAIRgName": "rg-em01-dev-uk-openai",
+
+    "OpenAIServiceName": "em01-dev-uk-oai-01",
+
+    "OpenAICognitiveSearchName": "em01-dev-uk-cs-01",
+
+    "OpenAIDemoAppName": "em01-dev-uk-oaapp-01",
+
+    "OpenAIDemoAppInsightsName": "em01-dev-uk-oaappi-01",
+
+    "OpenAIDemoKeyVaultName": "em01-dev-uk-oakv-01",
+
+    "OpenAIDemoDocumentIntelligenceName": "em01-dev-uk-oadi-01",
+
+    "OpenAIDemoAppServicePlanName": "em01-dev-uk-oaasp-01"
+}

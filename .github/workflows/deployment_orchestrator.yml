@@ -17,7 +17,7 @@ jobs:
   get-env-variables:
 
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
 
     outputs:
       DeployDevEnvironment: ${{ env.DeployDevEnvironment }}
@@ -30,15 +30,15 @@ jobs:
 
       - name: Determine Environments to Deploy 
         run: |
-          $ff_dev = Get-Content "./DeliveryIP_GitHub/variables/general_feature_flags/feature_flags_dev.json" | ConvertFrom-Json -AsHashtable
+          $ff_dev = Get-Content "./DeploymentComponents/variables/general_feature_flags/feature_flags_dev.json" | ConvertFrom-Json -AsHashtable
           $DeployDevEnvironment = $ff_dev.DeployDevEnvironment
           "DeployDevEnvironment=$DeployDevEnvironment" >> $env:GITHUB_ENV
 
-          $ff_test = Get-Content "./DeliveryIP_GitHub/variables/general_feature_flags/feature_flags_test.json" | ConvertFrom-Json -AsHashtable
+          $ff_test = Get-Content "./DeploymentComponents/variables/general_feature_flags/feature_flags_test.json" | ConvertFrom-Json -AsHashtable
           $DeployTestEnvironment = $ff_test.DeployTestEnvironment
           "DeployTestEnvironment=$DeployTestEnvironment" >> $env:GITHUB_ENV
 
-          $ff_prod = Get-Content "./DeliveryIP_GitHub/variables/general_feature_flags/feature_flags_prod.json" | ConvertFrom-Json -AsHashtable
+          $ff_prod = Get-Content "./DeploymentComponents/variables/general_feature_flags/feature_flags_prod.json" | ConvertFrom-Json -AsHashtable
           $DeployProdEnvironment = $ff_prod.DeployProdEnvironment
           "DeployProdEnvironment=$DeployProdEnvironment" >> $env:GITHUB_ENV
         shell: pwsh

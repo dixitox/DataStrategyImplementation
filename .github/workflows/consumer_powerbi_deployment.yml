@@ -35,7 +35,7 @@ jobs:
 
       - name: Get Main Variables
         run: |
-          $json_data = Get-Content "./DeliveryIP_GitHub/consumers/${{ inputs.ConsumerFolderName }}/variables/${{ inputs.environment }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/consumers/${{ inputs.ConsumerFolderName }}/variables/${{ inputs.environment }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name -eq "Hashtable"){
@@ -71,7 +71,7 @@ jobs:
             }
 
             Write-Output "Uploading new Report and Dataset."
-            New-PowerBIReport -Path './DeliveryIP_GitHub/consumers/beneficial_ownership/powerbi/transparency_engine_result.pbix' -Name 'Transparency_Engine_Report' -WorkspaceId "${{ env.FabricWorkspaceID }}"
+            New-PowerBIReport -Path './DeploymentComponents/consumers/beneficial_ownership/powerbi/transparency_engine_result.pbix' -Name 'Transparency_Engine_Report' -WorkspaceId "${{ env.FabricWorkspaceID }}"
 
             # Get Dataset with Report Name
             $datasets = (Invoke-PowerBIRestMethod -Method Get -Url "groups/${{ env.FabricWorkspaceID }}/datasets" | ConvertFrom-Json).value

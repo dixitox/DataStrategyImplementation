@@ -44,7 +44,7 @@ jobs:
 
       # Log into Azure
       - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
@@ -53,7 +53,7 @@ jobs:
 
       - name: Get Main Variables
         run: |
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_feature_flags/feature_flags_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_feature_flags/feature_flags_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -63,7 +63,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -73,7 +73,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/networking_setup/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/networking_setup/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -83,7 +83,7 @@ jobs:
               "$($item.Name)=$($item.Value)" >> $env:GITHUB_ENV
             }
           }
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/entra_assignments/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/entra_assignments/variables_${{ inputs.envFolderPath }}.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -184,9 +184,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.OpenAIRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/cognitive_service.bicep
+          template: ./DeploymentComponents/bicep_templates/cognitive_service.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/openai_service.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/openai_service.json
             location=${{ env.azureResourceLocation }}
             cognitiveServiceName=${{ env.OpenAIServiceName }}
             DeployKeyVault=${{ env.DeployKeyVault }}
@@ -218,9 +218,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.OpenAIRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/cognitive_search.bicep
+          template: ./DeploymentComponents/bicep_templates/cognitive_search.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/openai_cognitive_search.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/openai_cognitive_search.json
             location=${{ env.azureResourceLocation }}
             cognitiveSearchName=${{ env.OpenAICognitiveSearchName }}
             DeployLogAnalytics=${{ env.DeployLogAnalytics }}
@@ -241,15 +241,6 @@ jobs:
             IpRangeCidr=${{ env.IpRangeCidr }}
           failOnStdErr: false
 
-      # Refresh OIDC Credentials
-      - name: Refresh OIDC Credentials
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
-          tenant-id: ${{ secrets.TENANT_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
-          enable-AzPSSession: true
-
       - name: Open AI Demo Application - Deploy App Service Plan
         if: ${{ env.DeployOpenAIDemoApp == 'True' }}
         uses: Azure/arm-deploy@v1
@@ -259,9 +250,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.OpenAIRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/app_service_plan_linux.bicep
+          template: ./DeploymentComponents/bicep_templates/app_service_plan_linux.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/openai_application_app_service_plan.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/openai_application_app_service_plan.json
             appServicePlanName=${{ env.OpenAIDemoAppServicePlanName }} 
           failOnStdErr: false
 
@@ -274,9 +265,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.OpenAIRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/keyvault.bicep
+          template: ./DeploymentComponents/bicep_templates/keyvault.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/openai_application_keyvault.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/openai_application_keyvault.json
             location=${{ env.azureResourceLocation }}
             keyVaultName=${{ env.OpenAIDemoKeyVaultName }} 
             DeployLogAnalytics=${{ env.DeployLogAnalytics }}
@@ -306,9 +297,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.OpenAIRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/cognitive_service.bicep
+          template: ./DeploymentComponents/bicep_templates/cognitive_service.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/openai_application_document_intelligence.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/openai_application_document_intelligence.json
             location=${{ env.azureResourceLocation }}
             cognitiveServiceName=${{ env.OpenAIDemoDocumentIntelligenceName }}
             DeployKeyVault=True
@@ -341,9 +332,9 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.OpenAIRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/appinsights.bicep
+          template: ./DeploymentComponents/bicep_templates/appinsights.bicep
           # Supply deployment parameter values.
-          parameters: ./DeliveryIP_GitHub/bicep_parameters/${{ inputs.envFolderPath }}/openai_application_appinsights.json
+          parameters: ./DeploymentComponents/bicep_parameters/${{ inputs.envFolderPath }}/openai_application_appinsights.json
             location=${{ env.azureResourceLocation }}
             appInsightsName=${{ env.OpenAIDemoAppInsightsName }} 
             DeployLogAnalytics=${{ env.DeployLogAnalytics }}
@@ -361,7 +352,7 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.OpenAIRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/openai_demo_application.bicep
+          template: ./DeploymentComponents/bicep_templates/openai_demo_application.bicep
           # Supply deployment parameter values.
           parameters:
             location=${{ env.azureResourceLocation }}
@@ -400,7 +391,7 @@ jobs:
           # Provide the name of a resource group, only required for resource Group deployments.
           resourceGroupName: ${{ env.OpenAIRgName }}
           # Specify the path or URL to the Azure Resource Manager template.
-          template: ./DeliveryIP_GitHub/bicep_templates/rbac_dsdeployment_openai.bicep
+          template: ./DeploymentComponents/bicep_templates/rbac_dsdeployment_openai.bicep
           # Supply deployment parameter values.
           parameters: 
             env=${{ inputs.envFolderPath }}
@@ -432,15 +423,6 @@ jobs:
         run: |
           curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
           sudo apt-get install -y nodejs
-
-      # Refresh OIDC Credentials
-      - name: Refresh OIDC Credentials
-        uses: azure/login@v1
-        with:
-          client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
-          tenant-id: ${{ secrets.TENANT_ID }}
-          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
-          enable-AzPSSession: true
 
       - name: Deploy App Using azd
         if: ${{ env.DeployOpenAIDemoApp == 'True' }}

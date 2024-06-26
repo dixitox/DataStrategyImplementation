@@ -1,9 +1,0 @@
-{
-  "profiles": {
-    "Microsoft.DataStrategy.Functions": {
-      "commandName": "Project",
-      "commandLineArgs": "--port 7290",
-      "launchBrowser": false
-    }
-  }
-}

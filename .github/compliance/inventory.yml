@@ -1,6 +1,0 @@
-# Documentation for Inventory policy: https://eng.ms/docs/more/github-inside-microsoft/policies/inventory
-inventory:
-- source: ServiceTree
-  items:
-  - id: b793b16b-03a6-47b9-bfea-bbdf4c26fa1f
-  isProduction: true

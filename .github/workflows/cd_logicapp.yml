@@ -45,7 +45,7 @@ jobs:
 
       # Log into Azure
       - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
@@ -54,7 +54,7 @@ jobs:
 
       - name: Get Main Variables
         run: |
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_test.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_test.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -71,11 +71,11 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            Compress-Archive -Path ./DeliveryIP_GitHub/logicapp_standard/* -DestinationPath ./DeliveryIP_GitHub/logicapp_standard/logicapp.zip
+            Compress-Archive -Path ./DeploymentComponents/logicapp_standard/* -DestinationPath ./DeploymentComponents/logicapp_standard/logicapp.zip
 
             $setting=@{"WEBSITE_RUN_FROM_PACKAGE"="1"}
             Update-AzFunctionAppSetting -Name ${{ env.logicAppName }} -ResourceGroupName ${{ env.LogicAppRgName }} -AppSetting $setting
-            az logicapp deployment source config-zip --name ${{ env.logicAppName }} --resource-group ${{ env.LogicAppRgName }} --src ./DeliveryIP_GitHub/logicapp_standard/logicapp.zip
+            az logicapp deployment source config-zip --name ${{ env.logicAppName }} --resource-group ${{ env.LogicAppRgName }} --src ./DeploymentComponents/logicapp_standard/logicapp.zip
           azPSVersion: "latest"
 
   update-production-logicapp-workflows:
@@ -93,7 +93,7 @@ jobs:
 
       # Log into Azure
       - name: OIDC Login to Azure Public Cloud with AzPowershell (enableAzPSSession true)
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
           client-id: ${{ secrets.SERVICE_PRINCIPAL_CLIENT_ID }}
           tenant-id: ${{ secrets.TENANT_ID }}
@@ -102,7 +102,7 @@ jobs:
 
       - name: Get Main Variables
         run: |
-          $json_data = Get-Content "./DeliveryIP_GitHub/variables/general_variables/variables_prod.json" | ConvertFrom-Json -AsHashtable
+          $json_data = Get-Content "./DeploymentComponents/variables/general_variables/variables_prod.json" | ConvertFrom-Json -AsHashtable
           foreach ( $item in $json_data.GetEnumerator() )
           {
             if($($item.Value).GetType().Name.ToUpper().Contains("HASHTABLE") -or $($item.Value).GetType().Name.ToUpper().Contains("OBJECT[]")){
@@ -119,9 +119,9 @@ jobs:
         uses: azure/powershell@v1
         with:
           inlineScript: |
-            Compress-Archive -Path ./DeliveryIP_GitHub/logicapp_standard/* -DestinationPath ./DeliveryIP_GitHub/logicapp_standard/logicapp.zip
+            Compress-Archive -Path ./DeploymentComponents/logicapp_standard/* -DestinationPath ./DeploymentComponents/logicapp_standard/logicapp.zip
 
             $setting=@{"WEBSITE_RUN_FROM_PACKAGE"="1"}
             Update-AzFunctionAppSetting -Name ${{ env.logicAppName }} -ResourceGroupName ${{ env.LogicAppRgName }} -AppSetting $setting
-            az logicapp deployment source config-zip --name ${{ env.logicAppName }} --resource-group ${{ env.LogicAppRgName }} --src ./DeliveryIP_GitHub/logicapp_standard/logicapp.zip
+            az logicapp deployment source config-zip --name ${{ env.logicAppName }} --resource-group ${{ env.LogicAppRgName }} --src ./DeploymentComponents/logicapp_standard/logicapp.zip
           azPSVersion: "latest"
