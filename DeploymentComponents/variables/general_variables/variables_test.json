@@ -1,24 +1,24 @@
 {
-    "azureResourceLocation": "uksouth",
+    "azureResourceLocation": "eastus2",
 
-    "PrimaryRgName": "rg-em01-test-uk-main",
+    "PrimaryRgName": "rg-em01-test-eus-main",
 
     "tags": {
         "env": "test"
     },
 
-    "fabricCapacityName": "em01testukfabric01",
+    "fabricCapacityName": "em01testeusfabric01",
 
     "fabricSKU": "F2",
     
-    "synapseWorkspaceName": "em01-test-uk-syn-noexfil-02",
+    "synapseWorkspaceName": "em01-test-eus-syn-noexfil-02",
 
-    "dataFactoryName": "em01-test-uk-adf-01",
+    "dataFactoryName": "em01-test-eus-adf-01",
 
-    "azureSQLServerName": "em01-test-uk-sql-01",
+    "azureSQLServerName": "em01-test-eus-sql-01",
     "azureSQLServerDBName": "MetadataControl",
 
-    "keyVaultName": "em01-test-uk-kv-01",
+    "keyVaultName": "em01-test-eus-kv-01",
 
     "dataLakeName": "em01datalaketest60",
 
@@ -26,37 +26,37 @@
 
     "LogicAppRgName": "dataStrategyGHDemoTest-Logic",
 
-    "logicAppName": "em01-test-uk-logic-01",
+    "logicAppName": "em01-test-eus-logic-01",
 
-    "logicAppServicePlanName": "em01-test-uk-logic-asp-01",
+    "logicAppServicePlanName": "em01-test-eus-logic-asp-01",
 
-    "logicAppStorageName": "em01testuklogicst01",
+    "logicAppStorageName": "em01testeuslogicst01",
 
-    "logicAppInsightsName": "em01-test-uk-logic-appi-01",
+    "logicAppInsightsName": "em01-test-eus-logic-appi-01",
 
-    "purviewName": "em01-test-uk-pview-01",
+    "purviewName": "em01-test-eus-pview-01",
 
-    "logAnalyticsName": "em01-test-uk-log-01",
+    "logAnalyticsName": "em01-test-eus-log-01",
 
     "MlRgName": "dataStrategyGHDemoTest-ML",
 
-    "mlWorkspaceName": "em01-test-uk-mlw-01",
+    "mlWorkspaceName": "em01-test-eus-mlw-01",
 
-    "mlWorkspaceKeyVaultName": "em01-test-uk-mlwkv-01",
+    "mlWorkspaceKeyVaultName": "em01-test-eus-mlwkv-01",
 
-    "mlStorageName": "em01testukmlwst01",
+    "mlStorageName": "em01testeusmlwst01",
 
-    "mlAppInsightsName": "em01-test-uk-mlw-appi-01",
+    "mlAppInsightsName": "em01-test-eus-mlw-appi-01",
 
-    "mlContainerRegistryName": "em01testukmlwcr01",
+    "mlContainerRegistryName": "em01testeusmlwcr01",
 
     "databricksWorkspaceName": "em01-test-eu2-dbw-02",
 
-    "cognitiveServiceName": "em01-test-uk-cog-01",
+    "cognitiveServiceName": "em01-test-eus-cog-01",
 
-    "eventHubNamespaceName": "em01-test-uk-evhns-01",
+    "eventHubNamespaceName": "em01-test-eus-evhns-01",
 
-    "streamAnalyticsName": "em01-test-uk-asa-01",
+    "streamAnalyticsName": "em01-test-eus-asa-01",
 
     "OpenAIRgName": "rg-em01-test-eu2-openai",
 

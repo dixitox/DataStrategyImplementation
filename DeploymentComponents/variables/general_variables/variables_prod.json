@@ -1,24 +1,24 @@
 {
-    "azureResourceLocation": "uksouth",
+    "azureResourceLocation": "eastus2",
 
-    "PrimaryRgName": "rg-em01-prod-uk-main",
+    "PrimaryRgName": "rg-em01-prod-eus-main",
 
     "tags": {
         "env": "prod"
     },
 
-    "fabricCapacityName": "em01produkfabric01",
+    "fabricCapacityName": "em01prodeusfabric01",
 
     "fabricSKU": "F2",
     
-    "synapseWorkspaceName": "em01-prod-uk-syn-noexfil-02",
+    "synapseWorkspaceName": "em01-prod-eus-syn-noexfil-02",
 
-    "dataFactoryName": "em01-prod-uk-adf-01",
+    "dataFactoryName": "em01-prod-eus-adf-01",
 
-    "azureSQLServerName": "em01-prod-uk-sql-01",
+    "azureSQLServerName": "em01-prod-eus-sql-01",
     "azureSQLServerDBName": "MetadataControl",
 
-    "keyVaultName": "em01-prod-uk-kv-01",
+    "keyVaultName": "em01-prod-eus-kv-01",
 
     "dataLakeName": "em01datalakeprod60",
 
@@ -26,37 +26,37 @@
 
     "LogicAppRgName": "dataStrategyGHDemoProd-Logic",
 
-    "logicAppName": "em01-prod-uk-logic-01",
+    "logicAppName": "em01-prod-eus-logic-01",
 
-    "logicAppServicePlanName": "em01-prod-uk-logic-asp-01",
+    "logicAppServicePlanName": "em01-prod-eus-logic-asp-01",
 
-    "logicAppStorageName": "em01produklogicst01",
+    "logicAppStorageName": "em01prodeuslogicst01",
 
-    "logicAppInsightsName": "em01-prod-uk-logic-appi-01",
+    "logicAppInsightsName": "em01-prod-eus-logic-appi-01",
 
-    "purviewName": "em01-prod-uk-pview-01",
+    "purviewName": "em01-prod-eus-pview-01",
 
-    "logAnalyticsName": "em01-prod-uk-log-01",
+    "logAnalyticsName": "em01-prod-eus-log-01",
 
     "MlRgName": "dataStrategyGHDemoProd-ML",
 
-    "mlWorkspaceName": "em01-prod-uk-mlw-01",
+    "mlWorkspaceName": "em01-prod-eus-mlw-01",
 
-    "mlWorkspaceKeyVaultName": "em01-prod-uk-mlwkv-01",
+    "mlWorkspaceKeyVaultName": "em01-prod-eus-mlwkv-01",
 
-    "mlStorageName": "em01produkmlwst01",
+    "mlStorageName": "em01prodeusmlwst01",
 
-    "mlAppInsightsName": "em01-prod-uk-mlw-appi-01",
+    "mlAppInsightsName": "em01-prod-eus-mlw-appi-01",
 
-    "mlContainerRegistryName": "em01produkmlwcr01",
+    "mlContainerRegistryName": "em01prodeusmlwcr01",
 
     "databricksWorkspaceName": "em01-prod-eu2-dbw-02",
 
-    "cognitiveServiceName": "em01-prod-uk-cog-01",
+    "cognitiveServiceName": "em01-prod-eus-cog-01",
 
-    "eventHubNamespaceName": "em01-prod-uk-evhns-01",
+    "eventHubNamespaceName": "em01-prod-eus-evhns-01",
 
-    "streamAnalyticsName": "em01-prod-uk-asa-01",
+    "streamAnalyticsName": "em01-prod-eus-asa-01",
 
     "OpenAIRgName": "rg-em01-prod-eu2-openai",
 
