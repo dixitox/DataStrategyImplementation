@@ -1353,7 +1353,7 @@ jobs:
 
               $api_url = "https://${{ env.synapseWorkspaceName }}.dev.azuresynapse.net/linkedServices/LS_MachineLearningWorkspace?api-version=2019-06-01-preview"
               
-              Invoke-RestMethod -Method 'PUT'-ContentType "application/json" -Uri $api_url -Headers $headers -Body $ls_body
+              Invoke-RestMethod -Method 'PUT' -ContentType "application/json" -Uri $api_url -Headers $headers -Body $ls_body
             }
           azPSVersion: "latest"
 
@@ -1392,7 +1392,7 @@ jobs:
               $full_path = $datasetFolder + $name
               $dataset_body = (Get-Content "$full_path") | Out-String
               $api_url = "https://${{ env.synapseWorkspaceName }}.dev.azuresynapse.net/datasets/"+$name_without_extension+"?api-version=2020-12-01"
-              Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $dataset_body
+              Invoke-RestMethod -Method 'PUT' -ContentType "application/json" -Uri $api_url -Headers $headers -Body $dataset_body
             }
           azPSVersion: "latest"
 
