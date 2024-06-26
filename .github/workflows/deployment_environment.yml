@@ -1317,23 +1317,23 @@ jobs:
             # data lake
             $ls_body = (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/adls.json) -Replace 'storageAccountName', '${{ env.dataLakeName }}' | Out-String
             $api_url = "https://${{ env.synapseWorkspaceName }}.dev.azuresynapse.net/linkedServices/LS_DataLake?api-version=2019-06-01-preview"
-            Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $ls_body
+            Invoke-RestMethod -Method 'PUT' -ContentType "application/json" -Uri $api_url -Headers $headers -Body $ls_body
             
             # landing storage
             $ls_body = (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/adls.json) -Replace 'storageAccountName', '${{ env.landingStorageName }}' | Out-String
             $api_url = "https://${{ env.synapseWorkspaceName }}.dev.azuresynapse.net/linkedServices/LS_LandingStorage?api-version=2019-06-01-preview"
-            Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $ls_body
+            Invoke-RestMethod -Method 'PUT' -ContentType "application/json" -Uri $api_url -Headers $headers -Body $ls_body
             
             # azure sql
             (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql.json) -Replace 'azureSQLServerName', '${{ env.azureSQLServerName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql_synapse1.json
             $ls_body = (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/azuresql_synapse1.json) -Replace 'azureSQLServerDBName', '${{ env.azureSQLServerDBName }}' | Out-String
             $api_url = "https://${{ env.synapseWorkspaceName }}.dev.azuresynapse.net/linkedServices/LS_SQL_MetadataControl?api-version=2019-06-01-preview"
-            Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $ls_body
+            Invoke-RestMethod -Method 'PUT' -ContentType "application/json" -Uri $api_url -Headers $headers -Body $ls_body
             
             # key vault
             $ls_body = (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/keyvault.json) -Replace 'keyVaultName', '${{ env.keyVaultName }}' | Out-String
             $api_url = "https://${{ env.synapseWorkspaceName }}.dev.azuresynapse.net/linkedServices/LS_KeyVault?api-version=2019-06-01-preview"
-            Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $ls_body
+            Invoke-RestMethod -Method 'PUT' -ContentType "application/json" -Uri $api_url -Headers $headers -Body $ls_body
           
             # cognitive service
             (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/cognitiveservice.json) -Replace 'cognitiveServiceName', '${{ env.cognitiveServiceName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/cognitiveservice_synapse1.json
@@ -1341,7 +1341,7 @@ jobs:
             (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/cognitiveservice_synapse1.json) -Replace 'resourceGroupName', '${{ env.PrimaryRgName }}' | Set-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/cognitiveservice_synapse1.json
             $ls_body = (Get-Content ./DeploymentComponents/synapse_adf_artifacts/linked_services/cognitiveservice_synapse1.json) -Replace 'azureLocation', '${{ env.azureResourceLocation }}' | Out-String
             $api_url = "https://${{ env.synapseWorkspaceName }}.dev.azuresynapse.net/linkedServices/LS_CognitiveService?api-version=2019-06-01-preview"
-            Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $ls_body
+            Invoke-RestMethod -Method 'PUT' -ContentType "application/json" -Uri $api_url -Headers $headers -Body $ls_body
 
             if ("${{ env.DeployMLWorkspace }}" -eq "True") { 
               # create ml workspace linked service
@@ -1353,7 +1353,7 @@ jobs:
 
               $api_url = "https://${{ env.synapseWorkspaceName }}.dev.azuresynapse.net/linkedServices/LS_MachineLearningWorkspace?api-version=2019-06-01-preview"
               
-              Invoke-RestMethod -Method 'PUT' -Uri $api_url -Headers $headers -Body $ls_body
+              Invoke-RestMethod -Method 'PUT'-ContentType "application/json" -Uri $api_url -Headers $headers -Body $ls_body
             }
           azPSVersion: "latest"
 
