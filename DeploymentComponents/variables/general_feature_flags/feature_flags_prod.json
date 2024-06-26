@@ -33,7 +33,7 @@
 
     "DeploySynapseSqlPools": true,
 
-    "DeploySynapseArtifacts": false,
+    "DeploySynapseArtifacts": true,
 
     "DeploySynapseWithDataExfiltrationProtection": false,
 
