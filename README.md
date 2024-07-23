@@ -1,7 +1,5 @@
 ![Visitor](https://visitor-badge.laobi.icu/badge?page_id=dixitox.DataStrategyImplementation)
 
-Welcome to the test wiki!
-
 # Introduction
 Data Strategy is the foundation for implementing a modern data platform, and leverages Microsoft's own internal data estate journey.
 
