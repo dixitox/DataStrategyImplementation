@@ -1,4 +1,4 @@
-![Visitor](https://visitor-badge.laobi.icu/badge?page_id=ixitox.DataStrategyImplementation)
+![Visitor](https://visitor-badge.laobi.icu/badge?page_id=dixitox.DataStrategyImplementation)
 
 Welcome to the test wiki!
 
